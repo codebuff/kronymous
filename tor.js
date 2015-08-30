@@ -5,7 +5,6 @@
  */
 
 NaClTerm.nmf = 'tor.nmf';
-//NaClTerm.cwd = '/home/user';
 
 /* check whether another instance of this app is running
  #TODO(dt) check if default port is occupied
@@ -16,43 +15,25 @@ function anotherTorRunning(){
   // return NaClTerm.started;
   return false;
 }
-function saveTorArgs() { // this fucntion is redundant for now
-  var torArgs_ = 'defaults';
-  chrome.storage.local.set({
-    torArgs: torArgs_
-  }, function () {
-        //
-    });
-}
-// here argv is just one string
-function populateArgv() { // this fucntion is redundant for now
-  chrome.storage.local.get({
-    torArgs: 'default'
-  }, function (items) {
-    if(items.torArgs === "default"){
-      // just to be sure
-       NaClTerm.argv = ['--SOCKSPort', '9999'];
-      //playing it safe for now,
-      NaClTerm.argv = NaClTerm.argv.concat(['ReachableAddresses','*:80,*:443']);
-      //TODO(dt) remove this once gui is ready
-      //NaClTerm.argv = ['-f', '/mnt/http/torrc'];
-    }
-        //console.log(items.torArgs);
-  });
-}
-function runTor() {
-    if(!anotherTorRunning()){
-        populateArgv();
-        NaClTerm.init();
-    }else{
-        console.log("another tor instance running,exiting...");
-        window.open('', '_self', '');
-        window.close();
 
-    }
+function populateArgv() {
+  //TODO(dt) get parameters from storage once GUI is ready.
+  //tor socks proxy port
+  NaClTerm.argv = ['--SOCKSPort', '9999'];
+  //playing it safe for now,tor creates relays/bridges through
+  // these addresses only
+  NaClTerm.argv = NaClTerm.argv.concat(['ReachableAddresses','*:80,*:443']);
 }
+
+function runTor() {
+  if(!anotherTorRunning()){
+    populateArgv();
+    NaClTerm.init();
+  }
+}
+
 window.onload = function() {
-    lib.init(function() {
-        runTor();
-    });
+  lib.init(function() {
+    runTor();
+  });
 };

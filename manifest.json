@@ -2,7 +2,7 @@
   "name": "KroTor(beta) - Access internet via TOR",
   "short_name": "KroTor - beta",
   "description": "",
-  "version": "0.1",
+  "version": "0.1.3",
   "manifest_version": 2,
   "minimum_chrome_version": "36",
   "icons": {
@@ -10,9 +10,18 @@
     "48": "krotor_48.png",
     "128": "krotor_128.png"
   },
+  "offline_enabled": false,
   "permissions": [
     "storage",
-    "unlimitedStorage"
+    "clipboardWrite",
+    "unlimitedStorage",
+    {
+      "socket": [
+        "tcp-listen:*:*",
+        "tcp-connect",
+        "resolve-host"
+      ]
+    }
   ],
   "app": {
     "background": {

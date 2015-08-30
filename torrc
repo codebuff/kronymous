@@ -1,6 +1,0 @@
-#DataDirectory / will add if explicit mount point is defined in background.js
-#GeoIPFile /mnt/http/geoip-files/geoip
-#GeoIPv6File /mnt/http/geoip-files/geoip6
-SocksPort 9999
-#TODO(dt) remove this once gui is ready for firewall config
-ReachableAddresses *:80,*:443
