@@ -1,0 +1,147 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!--    Theme colour for android lollipop -->
+    <meta name="theme-color" content="#eeff41">
+    <!-- material design light theme -->
+    <link rel="stylesheet" href="css/material.min.css" charset="utf-8">
+    <script type="text/javascript" src="js/material.min.js"></script>
+    <link href="css/material.light_green-lime.min.css" rel="stylesheet" />
+    <link href="fonts/roboto.css" rel="stylesheet" />
+    <script src="fonts/evil-icons.js"></script>
+    <link href="fonts/evil-icons.css" rel="stylesheet" />
+    <link href="css/theme.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="main-switch-container">
+        <button id="back_button" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-js-ripple-effect settings-button">
+            <div data-icon="ei-arrow-left"></div>
+        </button>
+        <div class="mdl-tooltip" for="back_button">
+            Home
+        </div>
+        <h5>Krotor - Settings</h5>
+        <button id="save" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent save-button">
+            Save Changes
+        </button>
+        <div class="mdl-tooltip" for="global_switch">
+            Route your traffic through tor
+        </div>
+    </div>
+    <hr class="outer-hr" />
+    <div class="main-container main-container--scroll">
+        <div class="demo-card-square mdl-card mdl-shadow--2dp bridges-container">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">
+                    Tor Bridges
+                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="bridges">
+                        <input type="checkbox" id="bridges" class="mdl-switch__input" />
+                        <span class="mdl-switch__label"></span>
+                    </label>
+                </h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+                Does your Internet Service Provider (ISP) block or otherwise censor connections to the Tor network ?
+            </div>
+            <div id="bridges_card" class="mdl-card__actions mdl-card--border">
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="bridges-transport__radio">
+                    <input type="radio" id="bridges-transport__radio" class="mdl-radio__button" name="options" value="1" checked />
+                    <span class="mdl-radio__label">Connect with provided bridges</span>
+                </label>
+                <div class="bridges__dropdown">
+                    Transport Type
+                    <button id="bridges-inner__dropdown"
+                            class="mdl-button mdl-js-button mdl-button--icon">
+                        <div data-icon="ei-chevron-down"></div>
+                    </button>
+                </div>
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                    for="bridges-inner__dropdown">
+                    <li class="mdl-menu__item">flashproxy</li>
+                    <li class="mdl-menu__item">fte</li>
+                    <li class="mdl-menu__item">fte-ipv6</li>
+                    <li class="mdl-menu__item">meek-amazon</li>
+                    <li class="mdl-menu__item">meek-azure</li>
+                    <li class="mdl-menu__item">meek-google</li>
+                    <li class="mdl-menu__item">obfs3 (recommended)</li>
+                    <li class="mdl-menu__item">obfs4</li>
+                    <li class="mdl-menu__item">scramblesuit</li>
+                </ul>
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="bridges-custom__radio">
+                    <input type="radio" id="bridges-custom__radio" class="mdl-radio__button" name="options" value="2" />
+                    <span class="mdl-radio__label">Enter Custom Bridges</span>
+                </label>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <textarea class="mdl-textfield__input" type="text" rows="3" id="bridges-custom__text" disabled></textarea>
+                    <label class="mdl-textfield__label" for="bridges-custom__text">Enter bridge relays (One per line)</label>
+                </div>
+            </div>
+        </div>
+        <div class="demo-card-square mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">
+                    Configure Proxy
+                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="proxy">
+                        <input type="checkbox" id="proxy" class="mdl-switch__input" />
+                        <span class="mdl-switch__label"></span>
+                    </label>
+                </h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+                Does this computer need to use a local proxy to access the internet?
+            </div>
+            <div id="proxy_card" class="mdl-card__actions mdl-card--border">
+                <div class="proxy__dropdown">
+                    Proxy Type
+                    <button id="demo-menu-lower-right"
+                            class="mdl-button mdl-js-button mdl-button--icon">
+                        <div data-icon="ei-chevron-down"></div>
+                    </button>
+                </div>
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                    for="demo-menu-lower-right">
+                    <li class="mdl-menu__item">None</li>
+                    <li class="mdl-menu__item">Socks 4</li>
+                    <li class="mdl-menu__item">Socks 5</li>
+                    <li class="mdl-menu__item">Http/Https</li>
+                </ul>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="proxy__address" />
+                    <label class="mdl-textfield__label" for="proxy__address">IP Address or hostname</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="proxy__port" />
+                    <label class="mdl-textfield__label" for="proxy__port">Port</label>
+                    <span class="mdl-textfield__error">Input is not a number!</span>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="proxy__username" />
+                    <label class="mdl-textfield__label" for="proxy__username">Username</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="password" id="proxy__password" />
+                    <label class="mdl-textfield__label" for="proxy__password">Password</label>
+                </div>
+            </div>
+        </div>
+        <div class="demo-card-square mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">
+                    Use Dark Theme
+                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="dt">
+                        <input type="checkbox" id="dt" class="mdl-switch__input" />
+                        <span class="mdl-switch__label"></span>
+                    </label>
+                </h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+                Use a darker theme pallette for better viewing at night. 
+            </div>
+        </div>
+    </div>
+    <script src="js/settings.js"></script>
+</body>
+</html>
