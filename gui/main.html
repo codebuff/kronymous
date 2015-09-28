@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!--    Theme colour for android lollipop -->
+    <meta name="theme-color" content="#eeff41">
+    <!-- material design light theme -->
+    <link rel="stylesheet" href="css/material.min.css" charset="utf-8">
+    <script type="text/javascript" src="js/material.min.js"></script>
+    <link href="css/material.light_green-lime.min.css" rel="stylesheet" />
+    <link href="fonts/roboto.css" rel="stylesheet" />
+    <script src="fonts/evil-icons.js"></script>
+    <link href="fonts/evil-icons.css" rel="stylesheet" />
+    <link href="css/theme.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="main-switch-container">
+        <button id="settings_button" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-js-ripple-effect settings-button">
+            <div data-icon="ei-gear"></div>
+        </button>
+        <div class="mdl-tooltip" for="settings_button">
+            Change your settings
+        </div>
+        <h5>Krotor</h5>
+        <label id="global_switch" class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
+            <input type="checkbox" id="switch-1" class="mdl-switch__input" />
+            <span class="mdl-switch__label"></span>
+        </label>
+        <div class="mdl-tooltip" for="global_switch">
+            Route your traffic through tor
+        </div>
+    </div>
+    <hr class="outer-hr" />
+    <div class="main-container">
+        <div id="p1" class="mdl-progress mdl-js-progress"></div>
+        <button id="help" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent advanced-button">
+            <div data-icon="ei-question"></div>Help &amp; About Us
+        </button>
+        <button id="advanced" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent advanced-button">
+            <div data-icon="ei-chart"></div>Stats for Nerds
+        </button>
+        <div class="mdl-tooltip" for="advanced">
+            Show or hide the advanced logs
+        </div>
+        <div id="logs" class="logs">
+            <ul>
+                <li>
+                    Loading NaCl module.
+                </li>
+                <li>
+                    Loaded tor.nexe [6402 KiB]
+                </li>
+                <li>
+                    Sep 01 23:07:41.352 [notice] Tor v0.2.6.10 (git-409c815d2d94f4e3) running on NaCl with Libevent 2.0.22-stable, OpenSSL 1.0.1g and Zlib 1.2.8.
+                </li>
+                <li>
+                    Sep 01 23:07:41.352 [notice] Tor can't help you if you use it wrong! Learn how to be safe at https://www.torproject.org/download/download#warning
+                </li>
+                <li>
+                    Sep 01 23:07:41.367 [notice] Configuration file "/home/user/.torrc" not present, using reasonable defaults.
+                </li>
+                <li>
+                    Sep 01 23:07:41.381 [notice] Opening Socks listener on 127.0.0.1:9999
+                </li>
+                <li>
+                    Sep 01 23:07:41.000 [notice] Bootstrapped 0%: Starting
+                </li>
+                <li>
+                    Sep 01 23:07:42.000 [notice] Bootstrapped 5%: Connecting to directory server
+                </li>
+                <li>
+                    Sep 01 23:07:42.000 [notice] Bootstrapped 10%: Finishing handshake with directory server
+                </li>
+                <li>
+                    Sep 01 23:07:43.000 [notice] Bootstrapped 15%: Establishing an encrypted directory connection
+                </li>
+                <li>
+                    Sep 01 23:07:44.000 [notice] Bootstrapped 20%: Asking for networkstatus consensus
+                </li>
+                <li>
+                    Sep 01 23:07:44.000 [notice] Bootstrapped 25%: Loading networkstatus consensus
+                </li>
+                <li>
+                    ^ASep 01 23:07:59.000 [notice] I learned some more directory information, but not enough to build a circuit: We have no usable consensus.
+                </li>
+                <li>
+                    Sep 01 23:08:02.000 [notice] Bootstrapped 40%: Loading authority key certs
+                </li>
+                <li>
+                    Sep 01 23:08:02.000 [notice] Bootstrapped 45%: Asking for relay descriptors
+                </li>
+                <li>
+                    Sep 01 23:08:02.000 [notice] I learned some more directory information, but not enough to build a circuit: We need more microdescriptors: we have 0/6367, and can only build 0% of likely paths. (We have 0% of guards bw, 0% of midpoint bw, and 0% of exit bw = 0% of path bw.)
+                </li>
+                <li>
+                    Sep 01 23:08:03.000 [notice] Bootstrapped 50%: Loading relay descriptors
+                </li>
+                <li>
+                    Sep 01 23:08:07.000 [notice] Bootstrapped 55%: Loading relay descriptors
+                </li>
+                <li>
+                    Sep 01 23:08:07.000 [notice] Bootstrapped 61%: Loading relay descriptors
+                </li>
+                <li>
+                    Sep 01 23:08:07.000 [notice] Bootstrapped 66%: Loading relay descriptors
+                </li>
+                <li>
+                    Sep 01 23:08:07.000 [notice] Bootstrapped 73%: Loading relay descriptors
+                </li>
+                <li>
+                    Sep 01 23:08:08.000 [notice] Bootstrapped 80%: Connecting to the Tor network
+                </li>
+                <li>
+                    Sep 01 23:08:08.000 [notice] Bootstrapped 90%: Establishing a Tor circuit
+                </li>
+                <li>
+                    ^ASep 01 23:08:09.000 [notice] Tor has successfully opened a circuit. Looks like client functionality is working.
+                </li>
+                <li>
+                    Sep 01 23:08:09.000 [notice] Bootstrapped 100%: Done
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="js/index.js"></script>
+</body>
+</html>

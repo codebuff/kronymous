@@ -17,9 +17,12 @@ document.getElementById('settings_button').addEventListener("click", function ()
 });
 
 //set theme
-if (localStorage.getItem('theme') == 'dark') {
-    document.body.classList.add('dark');
-}
+chrome.storage.local.get('theme', function (value) {
+    if (value.theme == 'dark') {
+        document.body.classList.add('dark');
+    }
+});
+
 //on load effect
 document.body.classList.add('closed');
 setTimeout(function () {

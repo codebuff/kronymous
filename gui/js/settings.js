@@ -3,9 +3,11 @@ document.getElementById('back_button').addEventListener("click", function () {
     window.location.assign("index.html");
 });
 //set theme
-if (localStorage.getItem('theme') == 'dark') {
-    document.body.classList.add('dark');
-}
+chrome.storage.local.get('theme', function (value) {
+    if (value.theme == 'dark') {
+        document.body.classList.add('dark');
+    }
+});
 //on load effect
 document.body.classList.add('closed');
 setTimeout(function () {
@@ -17,9 +19,11 @@ updateSettingsValues();
 function updateSettingsValues() {
     //loads saved values and reflects in the UI
     //theme switch
-    if (localStorage.getItem('theme') == 'dark') {
-        document.getElementById('dt').checked = true;
-    }
+    chrome.storage.local.get('theme', function (value) {
+        if (value.theme == 'dark') {
+            document.getElementById('dt').checked = true;
+        }
+    });
 }
 //proxy state change event
 document.getElementById('proxy').addEventListener("click", function () {
@@ -62,10 +66,10 @@ document.getElementById('bridges-transport__radio').addEventListener("click", fu
 document.getElementById('dt').addEventListener("click", function () {
     if (this.checked) {
         document.body.classList.add('dark');
-        localStorage.setItem('theme', 'dark');
+        chrome.storage.local.set({ 'theme': 'dark' });
     }
     else {
         document.body.classList.remove('dark');
-        localStorage.setItem('theme', 'light');
+        chrome.storage.local.set({ 'theme': 'light' });
     }
 });
