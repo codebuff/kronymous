@@ -1,6 +1,6 @@
 ﻿//go back to home page button
 document.getElementById('back_button').addEventListener("click", function () {
-    window.location.assign("index.html");
+    location.href = "index.html";
 });
 //set theme
 chrome.storage.local.get('theme', function (value) {

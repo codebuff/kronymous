@@ -24,9 +24,9 @@
             Home
         </div>
         <h5>Krotor - Settings</h5>
-        <button id="save" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent save-button">
+        <!--<button id="save" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent save-button">
             Save Changes
-        </button>
+        </button>-->
         <div class="mdl-tooltip" for="global_switch">
             Route your traffic through tor
         </div>
@@ -52,23 +52,23 @@
                     <span class="mdl-radio__label">Connect with provided bridges</span>
                 </label>
                 <div class="bridges__dropdown">
-                    Transport Type
+                    <span id="bridges_text">Transport Type</span>
                     <button id="bridges-inner__dropdown"
                             class="mdl-button mdl-js-button mdl-button--icon">
                         <div data-icon="ei-chevron-down"></div>
                     </button>
                 </div>
-                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                <ul id="select_bridge" class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
                     for="bridges-inner__dropdown">
-                    <li class="mdl-menu__item">flashproxy</li>
-                    <li class="mdl-menu__item">fte</li>
-                    <li class="mdl-menu__item">fte-ipv6</li>
-                    <li class="mdl-menu__item">meek-amazon</li>
-                    <li class="mdl-menu__item">meek-azure</li>
-                    <li class="mdl-menu__item">meek-google</li>
-                    <li class="mdl-menu__item">obfs3 (recommended)</li>
-                    <li class="mdl-menu__item">obfs4</li>
-                    <li class="mdl-menu__item">scramblesuit</li>
+                    <li class="mdl-menu__item" data-text="flashproxy">flashproxy</li>
+                    <li class="mdl-menu__item" data-text="fte">fte</li>
+                    <li class="mdl-menu__item" data-text="fte-ipv6">fte-ipv6</li>
+                    <li class="mdl-menu__item" data-text="meek-amazon">meek-amazon</li>
+                    <li class="mdl-menu__item" data-text="meek-azure">meek-azure</li>
+                    <li class="mdl-menu__item" data-text="meek-google">meek-google</li>
+                    <li class="mdl-menu__item" data-text="obfs3">obfs3 (recommended)</li>
+                    <li class="mdl-menu__item" data-text="obfs4">obfs4</li>
+                    <li class="mdl-menu__item" data-text="scramblesuit">scramblesuit</li>
                 </ul>
                 <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="bridges-custom__radio">
                     <input type="radio" id="bridges-custom__radio" class="mdl-radio__button" name="options" value="2" />
@@ -95,18 +95,18 @@
             </div>
             <div id="proxy_card" class="mdl-card__actions mdl-card--border">
                 <div class="proxy__dropdown">
-                    Proxy Type
+                    <span id="proxy_text">Proxy Type</span>                    
                     <button id="demo-menu-lower-right"
                             class="mdl-button mdl-js-button mdl-button--icon">
                         <div data-icon="ei-chevron-down"></div>
                     </button>
                 </div>
-                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                <ul id="select_proxy" class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
                     for="demo-menu-lower-right">
-                    <li class="mdl-menu__item">None</li>
-                    <li class="mdl-menu__item">Socks 4</li>
-                    <li class="mdl-menu__item">Socks 5</li>
-                    <li class="mdl-menu__item">Http/Https</li>
+                    <li class="mdl-menu__item" data-text="None">None</li>
+                    <li class="mdl-menu__item" data-text="Socks 4">Socks 4</li>
+                    <li class="mdl-menu__item" data-text="Socks 5">Socks 5</li>
+                    <li class="mdl-menu__item" data-text="Http/Https">Http / Https</li>
                 </ul>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="text" id="proxy__address" />

@@ -12,7 +12,7 @@ document.getElementById('advanced').addEventListener("click", function () {
 document.getElementById('settings_button').addEventListener("click", function () {
     document.querySelector('body').classList.add('hide');
     setTimeout(function () {
-        window.location.assign("settings.html");
+        location.href = "settings.html";
     }, 300);
 });
 
