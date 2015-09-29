@@ -5,7 +5,10 @@ document.getElementById('p1').addEventListener('mdl-componentupgraded', function
 
 //show advanced click
 document.getElementById('advanced').addEventListener("click", function () {
-    document.getElementById('logs').classList.toggle('visible');
+    document.getElementById('terminal').classList.toggle('visible');
+    lib.init(function() {
+        runTor();
+    });
 });
 
 //open settings button

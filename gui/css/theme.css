@@ -65,7 +65,7 @@ body.hide {
   .main-container .advanced-button {
     margin: 16px 8px 0 8px;
     float: right; }
-  .main-container .logs {
+  .main-container .terminal {
     position: absolute;
     top: 164px;
     height: calc(100% - 185px);
@@ -77,15 +77,15 @@ body.hide {
     -o-transition: all 0.5s ease-out;
     -webkit-transition: all 0.5s ease-out;
     transition: all 0.5s ease-out; }
-    .main-container .logs ul {
+    .main-container .terminal ul {
       list-style: none;
       font-family: 'roboto';
       padding: 0;
       margin: 0; }
-    .main-container .logs li {
+    .main-container .terminal li {
       text-transform: uppercase;
       padding: 8px 8px; }
-      .main-container .logs li div {
+      .main-container .terminal li div {
         vertical-align: middle;
         margin-right: 8px;
         background: #EEFF41;
@@ -93,12 +93,12 @@ body.hide {
         padding: 5px;
         border-radius: 50%;
         fill: #576844; }
-  .main-container .logs.visible {
+  .main-container .terminal.visible {
     opacity: 1; }
-  .main-container .logs::-webkit-scrollbar-button {
+  .main-container .terminal::-webkit-scrollbar-button {
     height: 0;
     width: 0; }
-  .main-container .logs::-webkit-scrollbar-track {
+  .main-container .terminal::-webkit-scrollbar-track {
     -webkit-border-radius: 10px;
     border-radius: 10px;
     -moz-background-clip: padding-box;
@@ -106,17 +106,17 @@ body.hide {
     background-clip: padding-box;
     border: solid transparent;
     border-width: 0 0 0 4px; }
-  .main-container .logs::-webkit-scrollbar-corner {
+  .main-container .terminal::-webkit-scrollbar-corner {
     background: transparent; }
-  .main-container .logs::-webkit-scrollbar {
+  .main-container .terminal::-webkit-scrollbar {
     width: 6px; }
-  .main-container .logs::-webkit-scrollbar-thumb {
+  .main-container .terminal::-webkit-scrollbar-thumb {
     -webkit-border-radius: 10px;
     border-radius: 10px;
     border-width: 5px;
     background-color: #8BC34A;
     box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24); }
-  .main-container .logs:active::-webkit-scrollbar-thumb {
+  .main-container .terminal:active::-webkit-scrollbar-thumb {
     box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2); }
   .main-container .bridges-container {
     z-index: 2; }

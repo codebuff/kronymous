@@ -4,7 +4,7 @@
  * found in the LICENSE file.
  */
 
-NaClTerm.nmf = 'tor.nmf';
+NaClTerm.nmf = '../tor.nmf';
 
 /* check whether another instance of this app is running
  #TODO(dt) check if default port is occupied
@@ -33,7 +33,7 @@ function runTor() {
 }
 
 window.onload = function() {
-  lib.init(function() {
+  /*lib.init(function() {
     runTor();
-  });
+  });*/
 };

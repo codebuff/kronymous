@@ -1,0 +1,24 @@
+issue: terminal occupies full space (click on stats on nerd to see)
+specifications
+stats for nerd will start tor
+in place of help change it to settings.
+settings button can be redirected to about page.
+topmost right toggle button to be used to toggle proxy routing inside chrome
+a check button in settings page, (auto start tor on app start)
+
+rough layout
+----------------------------------------
+krotor (about etc)
+   ---------------------------------
+    some text
+    a toggle button for proxy routing
+    start tor button || settings button
+    -------------------------------
+    terminal ie logs 
+---------------------------------------
+
+suggestion
+> what do you think about giving border to the GUI
+> settings screen and about screen child elements
+alignment don't look favorable for screen size for chrome all
+ can you modify it a little bit.
