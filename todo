@@ -1,20 +1,24 @@
-issue: terminal occupies full space (click on stats on nerd to see)
 specifications
-stats for nerd will start tor
+
+stats for nerd will start tor and change its toggle behaviour,
+ie after tor is started clicking on it should not hide terminal
+or better hide the button if tor is running.
+
 in place of help change it to settings.
+
 settings button can be redirected to about page.
+
 topmost right toggle button to be used to toggle proxy routing inside chrome
 a check button in settings page, (auto start tor on app start)
 
-rough layout
+rough layout of main screen
 ----------------------------------------
 krotor (about etc)
    ---------------------------------
     some text
-    a toggle button for proxy routing
-    start tor button || settings button
+    start tor button || usage instructions(faq) || settings button
     -------------------------------
-    terminal ie logs 
+    terminal ie logs
 ---------------------------------------
 
 suggestion
