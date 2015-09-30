@@ -50,41 +50,15 @@ document.getElementById('select_proxy').addEventListener("click", function (e) {
     //set text of drop down
     document.getElementById('proxy_text').innerHTML = e.target.getAttribute("data-text");
 });
-//bridges state change event
-document.getElementById('bridges').addEventListener("click", function () {
+document.getElementById('acsport').addEventListener("click", function () {
     var chk = this.checked;
     if (chk) {
-        document.getElementById('bridges_card').classList.add('expand');
-        document.getElementById('bridges_card').classList.add('bridgescard');
+        document.getElementById('acsport_card').classList.add('expand');
+        document.getElementById('acsport_card').classList.add('acsportcard');
     }
     else {
-        document.getElementById('bridges_card').classList.remove('expand');
-        document.getElementById('bridges_card').classList.remove('bridgescard');
-    }
-});
-//bridge dropdown select
-var lasttarget_bridge;
-document.getElementById('select_bridge').addEventListener("click", function (e) {
-    if (lasttarget_bridge) {
-        lasttarget_bridge.classList.remove("selected");
-    }
-    //change the target element now
-    lasttarget_bridge = e.target;
-    lasttarget_bridge.classList.add("selected");
-    //set text of drop down
-    document.getElementById('bridges_text').innerHTML = e.target.getAttribute("data-text");
-});
-//radio button group events
-document.getElementById('bridges-custom__radio').addEventListener("click", function () {
-    if (this.checked) {
-        document.getElementById('bridges-custom__text').disabled = false;
-        document.getElementById('bridges-inner__dropdown').disabled = true;
-    }
-});
-document.getElementById('bridges-transport__radio').addEventListener("click", function () {
-    if (this.checked) {
-        document.getElementById('bridges-custom__text').disabled = true;
-        document.getElementById('bridges-inner__dropdown').disabled = false;
+        document.getElementById('acsport_card').classList.remove('expand');
+        document.getElementById('acsport_card').classList.remove('acsportcard');
     }
 });
 //theme switch
@@ -98,3 +72,40 @@ document.getElementById('dt').addEventListener("click", function () {
         chrome.storage.local.set({ 'theme': 'light' });
     }
 });
+//bridges state change event
+//document.getElementById('bridges').addEventListener("click", function () {
+//    var chk = this.checked;
+//    if (chk) {
+//        document.getElementById('bridges_card').classList.add('expand');
+//        document.getElementById('bridges_card').classList.add('bridgescard');
+//    }
+//    else {
+//        document.getElementById('bridges_card').classList.remove('expand');
+//        document.getElementById('bridges_card').classList.remove('bridgescard');
+//    }
+//});
+////bridge dropdown select
+//var lasttarget_bridge;
+//document.getElementById('select_bridge').addEventListener("click", function (e) {
+//    if (lasttarget_bridge) {
+//        lasttarget_bridge.classList.remove("selected");
+//    }
+//    //change the target element now
+//    lasttarget_bridge = e.target;
+//    lasttarget_bridge.classList.add("selected");
+//    //set text of drop down
+//    document.getElementById('bridges_text').innerHTML = e.target.getAttribute("data-text");
+//});
+////radio button group events
+//document.getElementById('bridges-custom__radio').addEventListener("click", function () {
+//    if (this.checked) {
+//        document.getElementById('bridges-custom__text').disabled = false;
+//        document.getElementById('bridges-inner__dropdown').disabled = true;
+//    }
+//});
+//document.getElementById('bridges-transport__radio').addEventListener("click", function () {
+//    if (this.checked) {
+//        document.getElementById('bridges-custom__text').disabled = true;
+//        document.getElementById('bridges-inner__dropdown').disabled = false;
+//    }
+//});

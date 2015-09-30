@@ -19,7 +19,7 @@ function anotherTorRunning(){
 function populateArgv() {
   //TODO(dt) get parameters from storage once GUI is ready.
   //tor socks proxy port
-  NaClTerm.argv = ['--SOCKSPort', '9999'];
+  NaClTerm.argv = ['--SOCKSPort', '6969'];
   //playing it safe for now,tor creates relays/bridges through
   // these addresses only
   NaClTerm.argv = NaClTerm.argv.concat(['ReachableAddresses','*:80,*:443']);

@@ -1,5 +1,6 @@
 ﻿body {
     overflow: hidden;
+    height: 100%;
 }
 
 //body open effect
@@ -86,14 +87,13 @@ body.hide {
     }
 
     .advanced-button {
-        margin: 16px 8px 0 8px;
-        float: right;
+        margin: 16px 8px 0 0;
     }
 
     .logs {
         position: absolute;
-        top: 164px;
-        height: calc(100% - 185px);
+        top: 180px;
+        height: calc(100% - 200px);
         width: calc(100% - 32px);
         overflow-y: scroll;
         overflow-x: auto;
@@ -213,6 +213,18 @@ body.hide {
         .mdl-card__actions.proxycard {
             height: 350px;
         }
+        //height for proxy card
+        .mdl-card__actions.cportcard {
+            height: 64px;
+
+            .mdl-textfield {
+                padding: 0;
+            }
+        }
+        //height for accessible port card
+        .mdl-card__actions.acsportcard {
+            height: 90px;
+        }
         //height for bridges card
         .mdl-card__actions.bridgescard {
             height: 240px;
@@ -287,6 +299,34 @@ body.hide {
 
 .main-container--scroll:active::-webkit-scrollbar-thumb {
     box-shadow: 0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12),0 2px 4px -1px rgba(0,0,0,.2);
+}
+
+//centered h5 on home page
+.main-switch-container--centered {
+    text-align: center;
+}
+
+// and h6 padding fix
+.h6padding--fix {
+    padding: 16px 16px 0 16px;
+    margin: 0;
+
+    .advanced-button {
+        float: right;
+        margin: -6px 8px 0 0;
+    }
+}
+
+//centered as on restart page
+.main-container--centered {
+    position: fixed;
+    display: block;
+    top: calc(50% - 61px);
+    width: calc(100% - 32px);
+
+    .mdl-progress {
+        width: 100%;
+    }
 }
 
 //dark theme

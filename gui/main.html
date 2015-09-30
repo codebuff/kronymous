@@ -23,36 +23,32 @@
     <link href="css/theme.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="main-switch-container">
-        <button id="settings_button" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-js-ripple-effect settings-button">
-            <div data-icon="ei-gear"></div>
-        </button>
-        <div class="mdl-tooltip" for="settings_button">
-            Change your settings
-        </div>
+    <div class="main-switch-container main-switch-container--centered">
         <h5>Krotor</h5>
-        <label id="global_switch" class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
-            <input type="checkbox" id="switch-1" class="mdl-switch__input" />
-            <span class="mdl-switch__label"></span>
-        </label>
-        <div class="mdl-tooltip" for="global_switch">
-            Route your traffic through tor
-        </div>
     </div>
     <hr class="outer-hr" />
+    <h6 class="h6padding--fix">
+        <span id="tor_status">Tor is not running</span>
+        <button id="settings_button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent settings-button advanced-button">
+            <div data-icon="ei-gear"></div>Settings
+        </button>
+        <button id="help" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent advanced-button">
+            <div data-icon="ei-question"></div>Instructions
+        </button>
+    </h6>
+    <div class="mdl-tooltip" for="settings_button">
+        Change your settings
+    </div>
     <div class="main-container">
         <div id="p1" class="mdl-progress mdl-js-progress"></div>
-        <button id="help" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent advanced-button">
-            <div data-icon="ei-question"></div>Help &amp; About Us
+        <button id="start_button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent advanced-button">
+            <span id="start_button_text">Start Tor</span>
         </button>
-        <button id="advanced" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent advanced-button">
-            <div data-icon="ei-chart"></div>Start Tor
-        </button>
-        <div class="mdl-tooltip" for="advanced">
+        <div class="mdl-tooltip" for="start_button">
             Show or hide the advanced logs
         </div>
-        <div id="terminal" class="logs"></div>
+        <div id="terminal" class="logs visible"></div>
     </div>
-    <script src="js/index.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
