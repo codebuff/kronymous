@@ -1,4 +1,23 @@
-﻿//this object will be passed to chrome.storage.set
+﻿document.addEventListener('DOMContentLoaded', function () {
+  chrome.storage.local.get({
+    theme : light,
+    proxy_type: "none",
+    proxy_address : "none",
+    proxy_port : "none",
+    autostart_tor : false,
+    accessible_ports : "all",
+    tor_port : 9999
+  }, function (items) {
+    console.log(items);
+    populate_gui(items);
+  });
+});
+
+//populate_gui
+function populate_gui(saved_settins){
+
+}
+//this object will be passed to chrome.storage.set
 var settings = {};
 var to_be_saved = {
   configure_proxy: false,
