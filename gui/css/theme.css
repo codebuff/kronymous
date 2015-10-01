@@ -148,7 +148,7 @@ body.hide {
     .main-container .mdl-card .mdl-card__actions.expand {
       opacity: 1; }
     .main-container .mdl-card .mdl-card__actions.proxycard {
-      height: 350px; }
+      height: 200px; }
     .main-container .mdl-card .mdl-card__actions.cportcard {
       height: 64px; }
       .main-container .mdl-card .mdl-card__actions.cportcard .mdl-textfield {
