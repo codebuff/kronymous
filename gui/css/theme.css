@@ -148,7 +148,8 @@ body.hide {
     .main-container .mdl-card .mdl-card__actions.expand {
       opacity: 1; }
     .main-container .mdl-card .mdl-card__actions.proxycard {
-      height: 200px; }
+      height: 200px;
+      overflow: visible; }
     .main-container .mdl-card .mdl-card__actions.cportcard {
       height: 64px; }
       .main-container .mdl-card .mdl-card__actions.cportcard .mdl-textfield {
@@ -218,6 +219,65 @@ body.hide {
   .h6padding--fix .advanced-button {
     float: right;
     margin: -6px 8px 0 0; }
+
+.error-text-container {
+  text-align: center;
+  position: fixed;
+  top: 15px;
+  width: 100%;
+  pointer-events: none; }
+  .error-text-container .error-text {
+    display: inline-block;
+    margin: 2px 0;
+    padding: 8px 16px;
+    border-radius: 3px;
+    background-color: #F44336;
+    color: #fff;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    opacity: 0;
+    -moz-transform: scale(0.7);
+    -ms-transform: scale(0.7);
+    -o-transform: scale(0.7);
+    -webkit-transform: scale(0.7);
+    transform: scale(0.7);
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s; }
+    .error-text-container .error-text .error-text-button {
+      display: inline-block;
+      background-color: #fff;
+      color: #F44336;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      cursor: pointer;
+      margin-left: 6px; }
+      .error-text-container .error-text .error-text-button svg {
+        padding: 2px;
+        border-radius: 50%; }
+
+.error-text-container.visible {
+  pointer-events: all; }
+  .error-text-container.visible .error-text {
+    opacity: 1;
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1); }
+
+.error-indicator {
+  display: block;
+  position: absolute;
+  pointer-events: none;
+  background-color: rgba(244, 67, 54, 0.7);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%; }
+
+.z-index--2 {
+  z-index: 2; }
 
 .main-container--centered {
   position: fixed;
