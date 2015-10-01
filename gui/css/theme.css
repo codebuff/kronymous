@@ -65,6 +65,11 @@ body.hide {
     width: 100%; }
   .main-container .advanced-button {
     margin: 16px 8px 0 0; }
+  .main-container .autostart_fix {
+    width: 120px;
+    display: inline-block;
+    margin-top: 17px;
+    float: right; }
   .main-container .logs {
     position: absolute;
     top: 180px;
@@ -170,9 +175,10 @@ body.hide {
 .mdl-menu__item.selected {
   background-color: rgba(0, 0, 0, 0.2); }
 
-#bridges_text, #proxy_text {
+#bridges_text, #proxy_text_outer {
   width: 225px;
-  display: inline-block; }
+  display: inline-block;
+  text-align: left; }
 
 .main-container--scroll {
   position: absolute;
@@ -287,10 +293,42 @@ body.hide {
   .main-container--centered .mdl-progress {
     width: 100%; }
 
+.first-time-dialog--overlay {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  pointer-events: none;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s; }
+  .first-time-dialog--overlay .demo-card-square {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translate3d(-50%, -50%, 0);
+    -ms-transform: translate3d(-50%, -50%, 0);
+    -o-transform: translate3d(-50%, -50%, 0);
+    -webkit-transform: translate3d(-50%, -50%, 0);
+    transform: translate3d(-50%, -50%, 0); }
+    .first-time-dialog--overlay .demo-card-square #ok_button {
+      display: block;
+      margin: 0 auto; }
+
+.first-time-dialog--overlay.visible {
+  opacity: 1;
+  pointer-events: all; }
+
 body.dark {
   background: #172026; }
-  body.dark h1, body.dark h2, body.dark h3, body.dark h4, body.dark h5, body.dark h6, body.dark li {
+  body.dark h1, body.dark h2, body.dark h3, body.dark h4, body.dark h5, body.dark h6, body.dark li, body.dark .mdl-checkbox__label, body.dark #proxy_text, body.dark #ok_button {
     color: #fff; }
+  body.dark .mdl-checkbox__box-outline {
+    border-color: #fff; }
   body.dark .mdl-switch:not(.is-checked) .mdl-switch__track {
     background: #537A94; }
   body.dark .mdl-card {

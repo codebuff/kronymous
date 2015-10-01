@@ -89,6 +89,13 @@ body.hide {
     .advanced-button {
         margin: 16px 8px 0 0;
     }
+    //autostart checkbox
+    .autostart_fix {
+        width: 120px;
+        display: inline-block;
+        margin-top: 17px;
+        float: right;
+    }
 
     .logs {
         position: absolute;
@@ -253,9 +260,10 @@ body.hide {
 }
 
 //dropdown text fix
-#bridges_text, #proxy_text {
+#bridges_text, #proxy_text_outer {
     width: 225px;
     display: inline-block;
+    text-align: left;
 }
 
 //with scrollbar
@@ -406,12 +414,54 @@ body.hide {
     }
 }
 
+//first time dialog box
+.first-time-dialog--overlay {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    pointer-events: none;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+
+    .demo-card-square {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -moz-transform: translate3d(-50%,-50%, 0);
+        -ms-transform: translate3d(-50%,-50%, 0);
+        -o-transform: translate3d(-50%,-50%, 0);
+        -webkit-transform: translate3d(-50%,-50%, 0);
+        transform: translate3d(-50%,-50%, 0);
+
+        #ok_button {
+            display: block;
+            margin: 0 auto;
+        }
+    }
+}
+
+//first time dialog visibility
+.first-time-dialog--overlay.visible {
+    opacity: 1;
+    pointer-events: all;
+}
+
 //dark theme
 body.dark {
     background: #172026;
 
-    h1, h2, h3, h4, h5, h6, li {
+    h1, h2, h3, h4, h5, h6, li, .mdl-checkbox__label, #proxy_text, #ok_button {
         color: #fff;
+    }
+
+    .mdl-checkbox__box-outline {
+        border-color: #fff;
     }
 
     .mdl-switch:not(.is-checked) .mdl-switch__track {

@@ -101,14 +101,16 @@
             </div>
             <div id="proxy_card" class="mdl-card__actions mdl-card--border">
                 <div class="proxy__dropdown">
-                    <span id="proxy_text">Proxy Type</span>
-                    <button id="demo-menu-lower-right"
+                    <button id="proxy_text_outer" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                        <span id="proxy_text">Proxy Type</span>                        
+                    </button>
+                    <button id="proxy-inner__dropdown"
                             class="mdl-button mdl-js-button mdl-button--icon">
                         <div data-icon="ei-chevron-down"></div>
                     </button>
                 </div>
                 <ul id="select_proxy" class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
-                    for="demo-menu-lower-right">
+                    for="proxy-inner__dropdown">
                     <li class="mdl-menu__item" data-text="socks4">Socks 4</li>
                     <li class="mdl-menu__item" data-text="socks5">Socks 5</li>
                     <li class="mdl-menu__item" data-text="http">HTTP</li>

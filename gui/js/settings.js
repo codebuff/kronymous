@@ -53,7 +53,7 @@ function populate_gui(items) {
 document.getElementById('back_button').addEventListener("click", function () {
     document.querySelector('body').classList.add('hide');
     setTimeout(function () {
-        location.href = "index.html";
+        location.href = "main.html";
     }, 300);
 });
 //on load effect
@@ -75,6 +75,10 @@ document.getElementById('proxy').addEventListener("click", function () {
         to_be_saved["configure_proxy"] = false;
     }
 });
+//proxy text click
+document.getElementById('proxy_text_outer').addEventListener("click", function (e) {
+    document.getElementById('proxy-inner__dropdown').click();
+});
 //proxy dropdown select
 var lasttarget_proxy;
 document.getElementById('select_proxy').addEventListener("click", function (e) {
@@ -87,6 +91,7 @@ document.getElementById('select_proxy').addEventListener("click", function (e) {
     //set text of drop down
     document.getElementById('proxy_text').innerHTML = e.target.getAttribute("data-text");
 });
+//accessible port 
 document.getElementById('acsport').addEventListener("click", function () {
     var chk = this.checked;
     if (chk) {
@@ -176,14 +181,19 @@ function raise_error(error, id) {
     //close error dialog
     document.querySelector('.error-text-button').addEventListener("click", function () {
         document.querySelector(".error-text-container").classList.remove("visible");
+        //remove all dots
+        var element = document.querySelectorAll('.error-indicator');
+        Array.prototype.forEach.call(element, function (node) {
+            node.parentNode.removeChild(node);
+        });
     });
 
     //error dot
     var ref_el = document.getElementById(id);
     var error_dot = document.createElement("div");
     error_dot.classList.add("error-indicator");
-    error_dot.style.left = ref_el.style.left + 16;
-    error_dot.style.top = ref_el.style.top - 16;
+    error_dot.style.left = ref_el.offsetLeft + 'px';
+    error_dot.style.top = ref_el.offsetTop + 'px';
     insertAfter(error_dot, ref_el);
 
     console.log(error + " on id " + id);
@@ -258,10 +268,10 @@ function save_settings() {
         chrome.storage.local.set(settings, function () {
             console.log(to_be_saved);
             console.log(settings);
-            //document.querySelector('body').classList.add('hide');
-            //setTimeout(function () {
-            //    location.href = "index.html";
-            //}, 300);
+            document.querySelector('body').classList.add('hide');
+            setTimeout(function () {
+                location.href = "main.html";
+            }, 300);
         });
     }
 }
