@@ -104,10 +104,10 @@
                 <ul id="select_proxy" class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
                     for="demo-menu-lower-right">
                     <li class="mdl-menu__item" data-text="None">None</li>
-                    <li class="mdl-menu__item" data-text="Socks 4">Socks 4</li>
-                    <li class="mdl-menu__item" data-text="Socks 5">Socks 5</li>
-                    <li class="mdl-menu__item" data-text="HTTP">HTTP</li>
-                    <li class="mdl-menu__item" data-text="HTTPS">HTTPS</li>
+                    <li class="mdl-menu__item" data-text="socks4">Socks 4</li>
+                    <li class="mdl-menu__item" data-text="socks5">Socks 5</li>
+                    <li class="mdl-menu__item" data-text="http">HTTP</li>
+                    <li class="mdl-menu__item" data-text="https">HTTPS</li>
                 </ul>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="text" id="proxy__address" />
@@ -118,14 +118,14 @@
                     <label class="mdl-textfield__label" for="proxy__port">Port</label>
                     <span class="mdl-textfield__error">Input is not a number!</span>
                 </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <!--div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="text" id="proxy__username" />
                     <label class="mdl-textfield__label" for="proxy__username">Username</label>
-                </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                </div-->
+                <!--div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="password" id="proxy__password" />
                     <label class="mdl-textfield__label" for="proxy__password">Password</label>
-                </div>
+                </div-->
             </div>
         </div>
         <div class="demo-card-square mdl-card mdl-shadow--2dp">
@@ -136,7 +136,7 @@
             </div>
             <div class="mdl-card__supporting-text">
                 You can change the default port through which tor routes it's traffic.
-                Enter a number between 49500 &amp; 65000
+                Enter a number, default is 9999
             </div>
             <div id="cport_card" class="mdl-card__actions mdl-card--border cportcard expand">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -161,8 +161,22 @@
             <div id="acsport_card" class="mdl-card__actions mdl-card--border">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="text" id="acsport__port" value="80,443" />
-                    <label class="mdl-textfield__label" for="acsport__port">Ports (comma seperated)</label>
+                    <label class="mdl-textfield__label" for="acsport__port">Ports (comma separated)</label>
                 </div>
+            </div>
+        </div>
+        <div class="demo-card-square mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">
+                    Auto start Tor
+                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="autostart_tor">
+                        <input type="checkbox" id="autostart_tor" class="mdl-switch__input" />
+                        <span class="mdl-switch__label"></span>
+                    </label>
+                </h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+                Auto start tor as soon as you start this app, (the app will not run at system or chrome startup)
             </div>
         </div>
         <div class="demo-card-square mdl-card mdl-shadow--2dp">
