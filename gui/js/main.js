@@ -7,8 +7,14 @@ document.addEventListener('DOMContentLoaded', function () {
   chrome.storage.local.get({
     restarting_tor: false,
     autostart_tor: false,
+    proxy_type: "none",
+    proxy_address: "none",
+    proxy_port: "none",
+    accessible_ports: "all",
+    reachable_addresses: "all",
+    tor_port: 9999
   }, function (items) {
-    console.log(items);
+    //console.log(items);
     if (items.restarting_tor || items.autostart_tor) {
       lib.init(function () {
         runTor();
@@ -16,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
       chrome.storage.local.set({restarting_tor: false});
       document.getElementById('start_button_text').innerHTML = "Restart Tor";
     }
+    set_settings(items);
   });
 });
 

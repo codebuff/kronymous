@@ -4,6 +4,11 @@
  * found in the LICENSE file.
  */
 
+var saved_settings;
+
+function set_settings(settings){
+  saved_settings = settings;
+}
 NaClTerm.nmf = '../tor.nmf';
 
 /* check whether another instance of this app is running
@@ -19,10 +24,13 @@ function anotherTorRunning() {
 function populateArgv() {
   //TODO(dt) get parameters from storage once GUI is ready.
   //tor socks proxy port
-  NaClTerm.argv = ['--SOCKSPort', '9999'];
+  NaClTerm.argv = ['--SOCKSPort', saved_settings.tor_port];
   //playing it safe for now,tor creates relays/bridges through
   // these addresses only
-  NaClTerm.argv = NaClTerm.argv.concat(['ReachableAddresses', '*:80,*:443']);
+  //accessible ports
+  if (saved_settings.accessible_ports != "all") {
+    NaClTerm.argv = NaClTerm.argv.concat(['ReachableAddresses', saved_settings.reachable_addresses]);
+  }
 }
 
 function runTor() {

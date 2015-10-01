@@ -1,4 +1,11 @@
-﻿document.addEventListener('DOMContentLoaded', function () {
+﻿//this object will be passed to chrome.storage.set
+var settings = {};
+var to_be_saved = {
+  configure_proxy: false,
+  accessible_ports: false
+};
+
+document.addEventListener('DOMContentLoaded', function () {
     chrome.storage.local.get({
         theme: "light",
         proxy_type: "none",
@@ -21,7 +28,9 @@ function populate_gui(items) {
         document.getElementById('dt').click();
     }
     //set proxy if not none
-    if (items.proxy_type != "none") {        
+    if (items.proxy_type != "none") {
+      document.getElementById('proxy').click();
+      to_be_saved["configure_proxy"] = true;
         document.getElementById('proxy_text').innerHTML = items.proxy_type;
         document.getElementById('proxy__address').value = items.proxy_address;
         document.getElementById('proxy__port').value = items.proxy_port;
@@ -32,18 +41,14 @@ function populate_gui(items) {
     }
     //accessible ports
     if (items.accessible_ports != "all") {
-        document.getElementById('acsport').click();        
+        document.getElementById('acsport').click();
+      to_be_saved["accessible_ports"] = true;
         document.getElementById('acsport__port').value = items.accessible_ports;
     }
     //set tor port
     document.getElementById('cport__port').value = items.tor_port;
 }
-//this object will be passed to chrome.storage.set
-var settings = {};
-var to_be_saved = {
-    configure_proxy: false,
-    accessible_ports: false
-};
+
 //go back to home page button
 document.getElementById('back_button').addEventListener("click", function () {
     location.href = "index.html";
@@ -105,11 +110,11 @@ document.getElementById('autostart_tor').addEventListener("click", function () {
 document.getElementById('dt').addEventListener("click", function () {
     if (this.checked) {
         document.body.classList.add('dark');
-        chrome.storage.local.set({ 'theme': 'dark' });
+      settings["theme"] = 'dark';
     }
     else {
         document.body.classList.remove('dark');
-        chrome.storage.local.set({ 'theme': 'light' });
+      settings["theme"] = 'light';
     }
 });
 //bridges state change event
@@ -210,8 +215,12 @@ function save_settings() {
         settings["reachable_addresses"] = "all";
         settings["accessible_ports"] = "all";
     }
+
+  //---------------saving settings----------
+  chrome.storage.local.set(settings,function(){
     console.log(to_be_saved);
     console.log(settings);
+  });
 }
 //save settings
 document.getElementById('save').addEventListener("click", save_settings);
