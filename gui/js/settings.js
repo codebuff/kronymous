@@ -129,6 +129,10 @@ document.getElementById('dt').addEventListener("click", function () {
 //    }
 //});
 
+function raise_error(error,id){
+  console.log(error +  " on id " + id);
+}
+
 function save_settings() {
   // ------ tor port ------------
   var tor_port = document.getElementById('cport__port').value;
@@ -136,7 +140,7 @@ function save_settings() {
     settings["tor_port"] = tor_port;
   } else {
     settings["tor_port"] = 9999;
-    //raise error and exit
+    raise_error("incorrect tor port", 'cport__port');
   }
 
   // ---------- configure proxy ------------
@@ -144,7 +148,7 @@ function save_settings() {
     var proxy_type = document.getElementById('proxy_text').innerHTML;
     console.log(proxy_type);
     if (proxy_type == "Proxy Type") {
-      //raise error, exit
+      raise_error("please select a proxy type or disable it", 'proxy_text');
     } else {
       var proxy_port = document.getElementById('proxy__port').value;
       if (0 < proxy_port && proxy_port <= 65535) {
@@ -153,7 +157,7 @@ function save_settings() {
         settings["proxy_port"] = proxy_port;
       } else {
         settings["proxy_type"] = "none";
-        //raise error and exit
+        raise_error("incorrect proxy port", 'proxy__port');
       }
     }
   } else {
@@ -163,8 +167,26 @@ function save_settings() {
   // ---------- accessible ports -----------
   if (to_be_saved["accessible_ports"]) {
     var accessible_ports = document.getElementById('acsport__port').value;
-    settings["accessible_ports"] = accessible_ports;
+    var reachable_addresses ;
+    var error = false;
+    var ports_list = accessible_ports.split(',');
+    for(var port = 0 ; port < ports_list.length - 1; port++){
+      if(!(0 < ports_list[port] && ports_list[port] < 65535)){
+        raise_error("incorrect port list entered, please enter number(s) between 0 and 65535 separated by ,","acsport__port");
+        error = true;
+        break;
+      }
+      console.log(ports_list[port]);
+    }
+    if(!error){
+      reachable_addresses = "*:" + accessible_ports.replace(',',",*:");
+      console.log(ports_list);
+      console.log(reachable_addresses);
+      settings["accessible_ports"] = accessible_ports;
+      settings["reachable_addresses"] = reachable_addresses;
+    }
   } else {
+    settings["reachable_addresses"] = "all";
     settings["accessible_ports"] = "all";
   }
   console.log(to_be_saved);
