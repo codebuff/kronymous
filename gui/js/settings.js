@@ -4,18 +4,22 @@ var to_be_saved = {
     configure_proxy: false,
     accessible_ports: false
 };
+var error_count = 0;
+
+//settings key value pair
+var default_settings = {
+    theme: "light",
+    proxy_type: "none",
+    proxy_address: "none",
+    proxy_port: "none",
+    autostart_tor: false,
+    accessible_ports: "all",
+    tor_port: 9999
+};
 
 document.addEventListener('DOMContentLoaded', function () {
-    chrome.storage.local.get({
-        theme: "light",
-        proxy_type: "none",
-        proxy_address: "none",
-        proxy_port: "none",
-        autostart_tor: false,
-        accessible_ports: "all",
-        tor_port: 9999
-    }, function (items) {
-        console.log(items);
+    chrome.storage.local.get(default_settings, function (items) {
+        //console.log(items);
         populate_gui(items);
     });
 });
@@ -51,10 +55,13 @@ function populate_gui(items) {
 
 //go back to home page button
 document.getElementById('back_button').addEventListener("click", function () {
-    document.querySelector('body').classList.add('hide');
-    setTimeout(function () {
-        location.href = "main.html";
-    }, 300);
+    save_settings();
+    if (error_count == 0) {
+        document.querySelector('body').classList.add('hide');
+        setTimeout(function () {
+            location.href = "main.html";
+        }, 300);
+    }
 });
 //on load effect
 document.body.classList.add('closed');
@@ -108,10 +115,10 @@ document.getElementById('acsport').addEventListener("click", function () {
 //autostart_tor
 document.getElementById('autostart_tor').addEventListener("click", function () {
     if (this.checked) {
-        chrome.storage.local.set({ 'autostart_tor': true });
+        settings['autostart_tor'] = true;
     }
     else {
-        chrome.storage.local.set({ 'autostart_tor': false });
+        settings['autostart_tor'] = false;
     }
 });
 //theme switch
@@ -124,6 +131,15 @@ document.getElementById('dt').addEventListener("click", function () {
         document.body.classList.remove('dark');
         settings["theme"] = 'light';
     }
+});
+//defaults settings
+document.getElementById('defaults').addEventListener("click", function () {
+    chrome.storage.local.set(default_settings, function () {
+        document.querySelector('body').classList.add('hide');
+         setTimeout(function () {
+         location.href = "main.html";
+         }, 300);
+    });
 });
 //bridges state change event
 //document.getElementById('bridges').addEventListener("click", function () {
@@ -163,7 +179,7 @@ document.getElementById('dt').addEventListener("click", function () {
 //    }
 //});
 
-var error_count = 0;
+
 function raise_error(error, id) {
     error_count++;
     //multiple errors
@@ -209,11 +225,11 @@ function save_settings() {
     error_count = 0;
     // ------ tor port ------------
     var tor_port = document.getElementById('cport__port').value;
-    if (0 < tor_port && tor_port <= 65535) {
+    if (1000 < tor_port && tor_port <= 65535) {
         settings["tor_port"] = tor_port;
     } else {
         settings["tor_port"] = 9999;
-        raise_error("incorrect tor port", 'cport__port');
+        raise_error("invalid tor port, please enter a number between 1000-65535", 'cport__port');
     }
 
     // ---------- configure proxy ------------
@@ -224,13 +240,13 @@ function save_settings() {
             raise_error("please select a proxy type or disable it", 'proxy_text');
         } else {
             var proxy_port = document.getElementById('proxy__port').value;
-            if (0 < proxy_port && proxy_port <= 65535) {
+            if (0 < proxy_port && proxy_port <= 65535 && document.getElementById('proxy__address') != null) {
                 settings["proxy_type"] = proxy_type;
                 settings["proxy_address"] = document.getElementById('proxy__address').value;
                 settings["proxy_port"] = proxy_port;
             } else {
                 settings["proxy_type"] = "none";
-                raise_error("incorrect proxy port", 'proxy__port');
+                raise_error("invalid proxy host or port no", 'proxy_text');
             }
         }
     } else {
@@ -243,9 +259,9 @@ function save_settings() {
         var reachable_addresses;
         var error = false;
         var ports_list = accessible_ports.split(',');
-        for (var port = 0 ; port < ports_list.length; port++) {
+        for (var port = 0; port < ports_list.length; port++) {
             if (!(0 < ports_list[port] && ports_list[port] < 65535)) {
-                raise_error("incorrect port list entered, please enter number(s) between 0 and 65535 separated by ,", "acsport__port");
+                raise_error("invalid port list entered, please enter number(s) between 0-65535 separated by ,", "acsport__port");
                 error = true;
                 break;
             }
@@ -262,16 +278,11 @@ function save_settings() {
         settings["reachable_addresses"] = "all";
         settings["accessible_ports"] = "all";
     }
-
     //---------------saving settings----------
     if (error_count == 0) {
         chrome.storage.local.set(settings, function () {
             console.log(to_be_saved);
             console.log(settings);
-            document.querySelector('body').classList.add('hide');
-            setTimeout(function () {
-                location.href = "main.html";
-            }, 300);
         });
     }
 }

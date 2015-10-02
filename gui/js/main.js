@@ -20,13 +20,15 @@ document.addEventListener('DOMContentLoaded', function () {
         //console.log(items);
         if (items.restarting_tor || items.autostart_tor) {
             lib.init(function () {
+                set_settings(items); // in tor.js
                 runTor();
+                updateTorStatus( "Tor is running, see below for details.");
             });
             chrome.storage.local.set({ restarting_tor: false });
             document.getElementById('start_button_text').innerHTML = "Restart Tor";
         }
         set_start_config(items);
-        set_settings(items);
+        set_settings(items); // in tor.js
     });
 });
 
@@ -59,6 +61,7 @@ document.getElementById('start_button').addEventListener("click", function () {
         lib.init(function () {
             runTor();
         });
+        updateTorStatus( "Tor is running, see below for details.");
         document.getElementById('start_button_text').innerHTML = "Restart Tor";
     } else {
         chrome.storage.local.set({ restarting_tor: true });
@@ -67,7 +70,7 @@ document.getElementById('start_button').addEventListener("click", function () {
             location.href = "restart.html";
         }, 300);
         //update tor status text
-        updateTorStatus("Starting Tor ...");
+        updateTorStatus("Restarting Tor ...");
     }
 });
 
@@ -102,8 +105,9 @@ document.getElementById('autostart_checkbox').addEventListener("click", function
 
 //help and about us
 document.getElementById('help').addEventListener("click", function () {
-    document.querySelector('body').classList.add('hide');
+    document.getElementById("first-time-dialog--overlay").classList.add("visible");
+    /*document.querySelector('body').classList.add('hide');
     setTimeout(function () {
         window.location.assign("about.html");
-    }, 300);
+    }, 300);*/
 });

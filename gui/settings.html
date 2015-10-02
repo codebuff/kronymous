@@ -21,7 +21,7 @@
             <div data-icon="ei-arrow-left"></div>
         </button>
         <div class="mdl-tooltip" for="back_button">
-            Discard your current settings and go back to the tor page
+            Save your current settings and go back.
         </div>
         <h5>Krotor - Settings</h5>
         <button id="save" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent save-button">
@@ -33,7 +33,7 @@
     </div>
     <div class="error-text-container">
         <div class="error-text">
-            <span id="error_text">Error ki maka sakinaka</span>
+            <span id="error_text">Error</span>
             <div class="error-text-button" data-icon="ei-close"></div>
         </div>
     </div>
@@ -142,8 +142,8 @@
                 </h2>
             </div>
             <div class="mdl-card__supporting-text">
-                You can change the default port through which tor routes it's traffic.
-                Enter a number, default is 9999
+                Change the default port on which tor socks proxy will run.
+                Enter a number between 1000-65535, default is 9999
             </div>
             <div id="cport_card" class="mdl-card__actions mdl-card--border cportcard expand">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -163,7 +163,7 @@
                 </h2>
             </div>
             <div class="mdl-card__supporting-text">
-                This computer goes through a firewall that only allows connections to certain ports
+                Does this computer goes through a firewall that only allows connections to certain ports ?
             </div>
             <div id="acsport_card" class="mdl-card__actions mdl-card--border">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -175,7 +175,7 @@
         <div class="demo-card-square mdl-card mdl-shadow--2dp">
             <div class="mdl-card__title">
                 <h2 class="mdl-card__title-text">
-                    Auto start Tor
+                    Auto Start Tor
                     <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="autostart_tor">
                         <input type="checkbox" id="autostart_tor" class="mdl-switch__input" />
                         <span class="mdl-switch__label"></span>
@@ -197,9 +197,12 @@
                 </h2>
             </div>
             <div class="mdl-card__supporting-text">
-                Use a darker theme pallette for better viewing at night.
+                Use a darker theme..
             </div>
         </div>
+        <button id="defaults" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent settings-button advanced-button">
+            Restore Settings to defaults.
+        </button>
     </div>
     <script src="js/settings.js"></script>
 </body>
