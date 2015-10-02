@@ -70,6 +70,7 @@ body.hide {
 
     .save-button {
         float: right;
+        margin-left: 12px;
     }
 }
 
@@ -402,6 +403,64 @@ body.hide {
     z-index: 2;
 }
 
+//mdl scrollable card
+.mdl-card--scrollable {
+    width: 60%;
+    min-width: 350px;
+    height: 95%;
+
+    .mdl-card__title {
+        height: 64px;
+    }
+
+    .mdl-card__supporting-text {
+        position: absolute;
+        height: calc(100% - 164px);
+        overflow-y: scroll;
+    }
+    //custom scrollbar
+    .mdl-card__supporting-text::-webkit-scrollbar-button {
+        height: 0;
+        width: 0;
+    }
+
+    .mdl-card__supporting-text::-webkit-scrollbar-track {
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        -moz-background-clip: padding-box;
+        -webkit-background-clip: padding-box;
+        background-clip: padding-box;
+        border: solid transparent;
+        border-width: 0 0 0 4px;
+    }
+
+    .mdl-card__supporting-text::-webkit-scrollbar-corner {
+        background: transparent;
+    }
+
+    .mdl-card__supporting-text::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .mdl-card__supporting-text::-webkit-scrollbar-thumb {
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        border-width: 5px;
+        background-color: #8BC34A;
+        box-shadow: 0 1px 1.5px 0 rgba(0,0,0,.12),0 1px 1px 0 rgba(0,0,0,.24);
+    }
+
+    .mdl-card__supporting-text:active::-webkit-scrollbar-thumb {
+        box-shadow: 0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12),0 2px 4px -1px rgba(0,0,0,.2);
+    }
+
+    .mdl-card--border {
+        position: absolute;
+        top: calc(100% - 64px);
+        height: 50px;
+    }
+}
+
 //centered as on restart page
 .main-container--centered {
     position: fixed;
@@ -428,6 +487,11 @@ body.hide {
     -o-transition: all 0.3s;
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
+    z-index: 5;
+
+    a {
+        color: #689F38;
+    }
 
     .demo-card-square {
         position: absolute;
