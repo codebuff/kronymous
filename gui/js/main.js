@@ -27,13 +27,13 @@ document.addEventListener('DOMContentLoaded', function () {
             chrome.storage.local.set({ restarting_tor: false });
             document.getElementById('start_button_text').innerHTML = "Restart Tor";
         }
-        set_start_config(items);
+        set_gui(items);
         set_settings(items); // in tor.js
     });
 });
 
 //set start up settings
-function set_start_config(items) {
+function set_gui(items) {
     //set theme
     if (items.theme == 'dark') {
         document.body.classList.add('dark');
