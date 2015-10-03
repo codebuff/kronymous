@@ -9,7 +9,7 @@
 // mount points are defined in naclprocess.js
 // TODO(dt) make sure that datadirectory for tor is set to default for now
 chrome.app.runtime.onLaunched.addListener(function() {
-  chrome.app.window.create('index.html', {
+  chrome.app.window.create('gui/index.html', {
     'bounds': {
       'width': 850,
       'height': 650,

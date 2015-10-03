@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Theme colour for android lollipop -->
+    <meta name="theme-color" content="#eeff41">
+    <!-- material design light theme -->
+    <link rel="stylesheet" href="css/material.min.css" charset="utf-8">
+    <script type="text/javascript" src="js/material.min.js"></script>
+    <link href="css/material.light_green-lime.min.css" rel="stylesheet"/>
+    <link href="fonts/roboto.css" rel="stylesheet"/>
+    <script src="fonts/evil-icons.js"></script>
+    <link href="fonts/evil-icons.css" rel="stylesheet"/>
+    <link href="css/theme.css" rel="stylesheet"/>
+    <!-- tor functionality -->
+    <script type="text/javascript" src="../hterm.concat.js"></script>
+    <script type="text/javascript" src="../pipeserver.js"></script>
+    <script type="text/javascript" src="../naclprocess.js"></script>
+    <script type="text/javascript" src="../naclterm.js"></script>
+    <script type="text/javascript" src="../tor.js"></script>
+</head>
+<body>
+<div class="main-switch-container main-switch-container--centered">
+    <h5>Krotor</h5>
+</div>
+<hr class="outer-hr"/>
+<h6 class="h6padding--fix">
+    <span id="tor_status">Tor is not running.</span>
+    <button id="settings_button"
+            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent settings-button advanced-button">
+        <div data-icon="ei-gear"></div>
+        Settings
+    </button>
+    <button id="help"
+            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent advanced-button">
+        <div data-icon="ei-question"></div>
+        Help
+    </button>
+</h6>
+<div class="mdl-tooltip" for="settings_button">
+    Change Settings[proxy, tor port, etc], please note that clicking this will stop the proxy before opening settings.
+</div>
+<div class="main-container">
+    <div id="p1" class="mdl-progress mdl-js-progress"></div>
+    <button id="start_button"
+            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent advanced-button">
+        <span id="start_button_text">Start Tor</span>
+    </button>
+    <label id="autostart_checkbox_cover" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect autostart_fix"
+           for="autostart_checkbox">
+        <input type="checkbox" id="autostart_checkbox" class="mdl-checkbox__input"/>
+        <span class="mdl-checkbox__label">Autostart Tor</span>
+    </label>
+
+    <!--div class="mdl-tooltip" for="autostart_checkbox_cover">
+        Auto Start tor as soon as you start this app.
+    </div-->
+    <div id="terminal" class="logs visible"></div>
+</div>
+<!--first time dialog box-->
+<div id="first-time-dialog--overlay" class="first-time-dialog--overlay">
+    <div id="firstrun" class="demo-card-square mdl-card mdl-shadow--2dp mdl-card--scrollable">
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">
+                Hi there!
+            </h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+            <p>
+                Thanks for installing KroTor, with this app you can access internet via Tor. [visit any blocked
+                websites, browse anonymously etc]<br/>
+                Once started, tor socks proxy will be available <em>on your system</em> which can be accessed at
+                127.0.0.1:9999
+            </p>
+            <hr/>
+            <p>
+                <strong>Usage Instructions</strong>
+                <br/>Chrome Apps (such as this one) cannot set the proxy settings in the Chrome browser,
+                <em> In order to use Tor Socks proxy created by this app, please configure any extension or system
+                    settings accordingly.</em> <br/>
+                <em>For example:</em> <br/>
+                You can use extension <a
+                    href="https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif"
+                    target="_blank"> SwitchyOmega</a> with following settings<br/>
+                protocol : socks5<br/>
+                server : 127.0.0.1<br/>
+                port : 9999 (or the tor port you defined in settings)<br/>
+                <em>In future, there is plan to create a companion extension for this app.</em>
+            </p>
+            <hr/>
+            <p>
+                To verify that you are on Tor network, please visit : <a href="https://check.torproject.org" target="_blank">https://check.torproject.org</a>
+            </p>
+            <hr/>
+            <p>
+                If Tor takes too long to connect, try enabling/modifying accessible ports in settings.
+            </p>
+            <hr/>
+            <p>
+                Please note that this Chrome App is not a substitute of <a
+                    href="https://www.torproject.org/download/download-easy.html.en" target="_blank">Tor Browser
+                Bundle</a>
+            </p>
+            <hr/>
+            <p>
+                If you face any issue, <a href="https://codebuff.net/krotor/support" target="_blank">please ask on the
+                support page</a>.
+            </p>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <button id="ok_button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                Ok
+            </button>
+        </div>
+    </div>
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>

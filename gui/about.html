@@ -1,0 +1,84 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!--    Theme colour for android lollipop -->
+    <meta name="theme-color" content="#eeff41">
+    <!-- material design light theme -->
+    <link rel="stylesheet" href="css/material.min.css" charset="utf-8">
+    <script type="text/javascript" src="js/material.min.js"></script>
+    <link href="css/material.light_green-lime.min.css" rel="stylesheet" />
+    <link href="fonts/roboto.css" rel="stylesheet" />
+    <script src="fonts/evil-icons.js"></script>
+    <link href="fonts/evil-icons.css" rel="stylesheet" />
+    <link href="css/theme.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="main-switch-container">
+        <button id="back_button" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-js-ripple-effect settings-button">
+            <div data-icon="ei-arrow-left"></div>
+        </button>
+        <div class="mdl-tooltip" for="back_button">
+            Home
+        </div>
+        <h5>Krotor - Help</h5>
+    </div>
+    <hr class="outer-hr" />
+    <div class="main-container main-container--scroll">
+        <div class="demo-card-square mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">
+                    Licenses
+                </h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+                <h5><a href="http://www.getmdl.io/" target="_blank">Material Design Lite</a></h5>
+                <h6>© Google, 2015. Licensed under an Apache-2 license.</h6>
+                <h5><a href="http://evil-icons.io/" target="_blank">Evil Icons</a></h5>
+                <h6>Evil Icons licensed under MIT License</h6>
+                <h5><a href="https://www.torproject.org" target="_blank">The Tor Project</a></h5>
+                <h6>© The Tor Project, Inc., 2015. <a href="LICENSE.txt" target="_blank">License</a></h6>
+            </div>
+        </div>
+        <div class="demo-card-square mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">
+                    Made By
+                </h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+                <h5>Developed by</h5>
+                <a href="https://github.com/codebuff" target="_blank">
+                    <img src="img/5947267.jpg" />
+                </a>
+                <h5>Designed by</h5>
+                <a href="https://github.com/puranjayjain" target="_blank">
+                    <img src="img/5458094.jpg" />
+                </a>
+            </div>
+        </div>
+        <div class="demo-card-square mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">
+                    About Krotor
+                </h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+                Krotor v1.x.x<br />
+                A Chrome app which creates a system wide (tor)socks proxy at port 9999 enabling access to Tor network.<br />
+                Once the proxy is up and running(can be verified by logs in terminal) you can use any proxy extension in browser,system proxy settings etc to access tor socks proxy at 127.0.0.1:9999  (in next version this will be handled in app itself)<br />
+                <br />
+                On windows, system proxy settings don't work, use a proxy extension such as foxyproxy<br />
+                <br />
+                (the official codebase of tor is running in this app, this is port of Tor to NaCl platform on Chrome browser.)<br />
+                Tor : https://www.torproject.org<br />
+                <br />
+                Krotor is produced independently from the Tor® anonymity software and carries no guarantee from The Tor Project about quality, suitability or anything else.<br />
+            </div>
+        </div>
+    </div>
+    <script src="js/about.js"></script>
+</body>
+</html>
