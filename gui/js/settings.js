@@ -136,9 +136,9 @@ document.getElementById('dt').addEventListener("click", function () {
 document.getElementById('defaults').addEventListener("click", function () {
     chrome.storage.local.set(default_settings, function () {
         document.querySelector('body').classList.add('hide');
-         setTimeout(function () {
-         location.href = "main.html";
-         }, 300);
+        setTimeout(function () {
+            location.href = "main.html";
+        }, 300);
     });
 });
 //bridges state change event
@@ -240,7 +240,7 @@ function save_settings() {
             raise_error("please select a proxy type or disable it", 'proxy_text');
         } else {
             var proxy_port = document.getElementById('proxy__port').value;
-            if (0 < proxy_port && proxy_port <= 65535 && document.getElementById('proxy__address') != null) {
+            if (0 < proxy_port && proxy_port <= 65535 && document.getElementById('proxy__address').value != "") {
                 settings["proxy_type"] = proxy_type;
                 settings["proxy_address"] = document.getElementById('proxy__address').value;
                 settings["proxy_port"] = proxy_port;
@@ -268,7 +268,7 @@ function save_settings() {
             console.log(ports_list[port]);
         }
         if (!error) {
-            reachable_addresses = "*:" + accessible_ports.replace(',', ",*:");
+            reachable_addresses = "*:" + accessible_ports.replace(/,/g, ",*:");
             console.log(ports_list);
             console.log(reachable_addresses);
             settings["accessible_ports"] = accessible_ports;
