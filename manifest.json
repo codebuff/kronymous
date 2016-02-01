@@ -2,7 +2,7 @@
   "name": "KroTor - Access internet via TOR",
   "short_name": "KroTor",
   "description": "",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "manifest_version": 2,
   "minimum_chrome_version": "36",
   "icons": {
