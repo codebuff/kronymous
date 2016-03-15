@@ -4,6 +4,8 @@
  * found in the LICENSE file.
  */
 
+'use strict';
+
 /**
  * PipeServer manages a set of anonymous pipes.
  */
@@ -38,7 +40,7 @@ PipeServer.prototype.handleMessageAPipe = function(msg, reply, src) {
   reply({
     pipe_id: id,
   });
-}
+};
 
 /**
  * Handle an anonymous pipe write call.
@@ -92,7 +94,7 @@ PipeServer.prototype.handleMessageAPipeWrite = function(
       });
     }
   }
-}
+};
 
 /**
  * Handle an anonymous pipe read call.
@@ -142,7 +144,7 @@ PipeServer.prototype.handleMessageAPipeRead = function(
       });
     }
   }
-}
+};
 
 /**
  * Close handle to an anonymous pipe for a process.
@@ -176,7 +178,7 @@ PipeServer.prototype.closeAPipe = function(pid, pipeId, writer) {
       pipe.writesPending = [];
     }
   }
-}
+};
 
 /**
  * Handle an anonymous pipe close call.
@@ -187,7 +189,7 @@ PipeServer.prototype.handleMessageAPipeClose = function(
   reply({
     result: 0,
   });
-}
+};
 
 
 /**
@@ -217,7 +219,7 @@ PipeServer.prototype.addProcessPipes = function(pid, params) {
       }
     }
   }
-}
+};
 
 
 /**
@@ -234,4 +236,4 @@ PipeServer.prototype.deleteProcess = function(pid) {
       this.closeAPipe(pid, pipeId, true);
     }
   }
-}
+};

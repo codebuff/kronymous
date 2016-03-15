@@ -39,6 +39,10 @@ function populateArgv() {
         NaClTerm.argv = NaClTerm.argv.concat([proxy_type, saved_settings.proxy_address + ":" + saved_settings.proxy_port]);
     }
 
+    if (saved_settings.adv_opt != "none") {
+        NaClTerm.argv = NaClTerm.argv.concat([saved_settings.adv_opt])
+    }
+
 }
 
 function runTor() {

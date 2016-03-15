@@ -8,13 +8,14 @@ var error_count = 0;
 
 //settings key value pair
 var default_settings = {
-    theme: "light",
+    theme: "dark",
     proxy_type: "none",
     proxy_address: "none",
     proxy_port: "none",
     autostart_tor: false,
     accessible_ports: "all",
-    tor_port: 9999
+    tor_port: 9999,
+    adv_opt:"none"
 };
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -48,6 +49,12 @@ function populate_gui(items) {
         document.getElementById('acsport').click();
         to_be_saved["accessible_ports"] = true;
         document.getElementById('acsport__port').value = items.accessible_ports;
+    }
+    // advance options
+    if (items.adv_opt != "none") {
+        document.getElementById("adv_opt").click();
+        to_be_saved["adv_opt"] = true;
+        document.getElementById("adv_opt_text").value = items.adv_opt;
     }
     //set tor port
     document.getElementById('cport__port').value = items.tor_port;
@@ -98,7 +105,7 @@ document.getElementById('select_proxy').addEventListener("click", function (e) {
     //set text of drop down
     document.getElementById('proxy_text').innerHTML = e.target.getAttribute("data-text");
 });
-//accessible port 
+//accessible port
 document.getElementById('acsport').addEventListener("click", function () {
     var chk = this.checked;
     if (chk) {
@@ -110,6 +117,21 @@ document.getElementById('acsport').addEventListener("click", function () {
         document.getElementById('acsport_card').classList.remove('expand');
         document.getElementById('acsport_card').classList.remove('acsportcard');
         to_be_saved["accessible_ports"] = false;
+    }
+});
+
+//advance options
+document.getElementById('adv_opt').addEventListener("click", function () {
+    var chk = this.checked;
+    if (chk) {
+        document.getElementById('adv_opt_card').classList.add('expand');
+        document.getElementById('adv_opt_card').classList.add('advoptcard');
+        to_be_saved["adv_opt"] = true;
+    }
+    else {
+        document.getElementById('adv_opt_card').classList.remove('expand');
+        document.getElementById('adv_opt_card').classList.remove('advoptcard');
+        to_be_saved["adv_opt"] = false;
     }
 });
 //autostart_tor
@@ -278,11 +300,26 @@ function save_settings() {
         settings["reachable_addresses"] = "all";
         settings["accessible_ports"] = "all";
     }
+
+    // ---------- advance options -----------
+    if (to_be_saved["adv_opt"]) {
+        var adv_opt = document.getElementById('adv_opt_text').value;
+        var error = false;
+            if (adv_opt == "") {
+                raise_error("advance option cannot be empty, please disable it or give the options", "adv_opt_text");
+                error = true;
+            }
+        if (!error) {
+            settings["adv_opt"] = adv_opt;
+        }
+    } else {
+        settings["adv_opt"] = "none";
+    }
     //---------------saving settings----------
     if (error_count == 0) {
         chrome.storage.local.set(settings, function () {
-            console.log(to_be_saved);
-            console.log(settings);
+            //console.log(to_be_saved);
+            //console.log(settings);
         });
     }
 }

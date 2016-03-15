@@ -61,7 +61,7 @@ body.hide {
   width: calc(100% - 16px); }
 
 .main-container {
-  padding: 16px; }
+  padding: 16px;}
   .main-container .mdl-progress {
     width: 100%; }
   .main-container .advanced-button {
@@ -154,7 +154,7 @@ body.hide {
     .main-container .mdl-card .mdl-card__actions.expand {
       opacity: 1; }
     .main-container .mdl-card .mdl-card__actions.proxycard {
-      height: 200px;
+      height: inherit;
       overflow: visible; }
     .main-container .mdl-card .mdl-card__actions.cportcard {
       height: 64px; }
@@ -360,6 +360,9 @@ body.hide {
     .first-time-dialog--overlay .demo-card-square #ok_button {
       display: block;
       margin: 0 auto; }
+.first-time-dialog--overlay .demo-card-square #anonymity_ok_button {
+  display: block;
+  margin: 0 auto; }
 
 .first-time-dialog--overlay.visible {
   opacity: 1;
@@ -392,3 +395,15 @@ body.dark {
       background-color: #2F536B; }
   body.dark .mdl-menu__outline {
     background-color: #163F5A; }
+
+  #anonymity{
+    display:none;
+  }
+
+.main-container .mdl-card .mdl-card__actions.advoptcard {
+  height: 90px;
+}
+
+#settings_container{
+  margin-left: 6%;
+}

@@ -15,7 +15,8 @@ document.addEventListener('DOMContentLoaded', function () {
         accessible_ports: "all",
         reachable_addresses: "all",
         tor_port: 9999,
-        theme: "light"
+        theme: "dark",
+        adv_opt:"none"
     }, function (items) {
         //console.log(items);
         if (items.restarting_tor || items.autostart_tor) {
@@ -26,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             chrome.storage.local.set({ restarting_tor: false });
             document.getElementById('start_button_text').innerHTML = "Restart Tor";
+            document.getElementById('anonymity').setAttribute('style', 'display:inline-block');
         }
         set_gui(items);
         set_settings(items); // in tor.js
@@ -54,6 +56,11 @@ document.getElementById('ok_button').addEventListener("click", function () {
     chrome.storage.local.set({ firstrun: false });
 });
 
+//anonymity
+document.getElementById('anonymity_ok_button').addEventListener("click", function () {
+    document.getElementById('anonymity-help--overlay').classList.remove('visible');
+});
+
 //start / restart tor button
 document.getElementById('start_button').addEventListener("click", function () {
     if (document.getElementById('start_button_text').innerHTML == "Start Tor") {
@@ -63,6 +70,7 @@ document.getElementById('start_button').addEventListener("click", function () {
         });
         updateTorStatus( "Tor is running, see below for details.");
         document.getElementById('start_button_text').innerHTML = "Restart Tor";
+        document.getElementById('anonymity').setAttribute('style', 'display:inline-block');
     } else {
         chrome.storage.local.set({ restarting_tor: true });
         document.querySelector('body').classList.add('hide');
@@ -110,4 +118,13 @@ document.getElementById('help').addEventListener("click", function () {
     setTimeout(function () {
         window.location.assign("about.html");
     }, 300);*/
+});
+
+//anonymity
+document.getElementById('anonymity').addEventListener("click", function () {
+    document.getElementById("anonymity-help--overlay").classList.add("visible");
+    /*document.querySelector('body').classList.add('hide');
+     setTimeout(function () {
+     window.location.assign("about.html");
+     }, 300);*/
 });

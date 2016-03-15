@@ -16052,7 +16052,7 @@ lib.resource.add('hterm/audio/bell', 'audio/ogg;base64',
 );
 
 lib.resource.add('hterm/concat/date', 'text/plain',
-'Tue, 18 Aug 2015 13:18:23 +0000' +
+'Mon, 14 Mar 2016 11:09:37 +0000' +
 ''
 );
 

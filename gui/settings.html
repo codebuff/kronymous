@@ -9,201 +9,226 @@
     <!-- material design light theme -->
     <link rel="stylesheet" href="css/material.min.css" charset="utf-8">
     <script type="text/javascript" src="js/material.min.js"></script>
-    <link href="css/material.light_green-lime.min.css" rel="stylesheet" />
-    <link href="fonts/roboto.css" rel="stylesheet" />
+    <link href="css/material.light_green-lime.min.css" rel="stylesheet"/>
+    <link href="fonts/roboto.css" rel="stylesheet"/>
     <script src="fonts/evil-icons.js"></script>
-    <link href="fonts/evil-icons.css" rel="stylesheet" />
-    <link href="css/theme.min.css" rel="stylesheet" />
+    <link href="fonts/evil-icons.css" rel="stylesheet"/>
+    <link href="css/theme.css" rel="stylesheet"/>
 </head>
 <body>
-    <div class="main-switch-container">
-        <button id="back_button" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-js-ripple-effect settings-button">
-            <div data-icon="ei-arrow-left"></div>
-        </button>
-        <div class="mdl-tooltip" for="back_button">
-            Save your current settings and go back.
-        </div>
-        <h5>Krotor - Settings</h5>
-        <button id="defaults" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent save-button">
-            Restore Default Settings
-        </button>
-        <button id="save" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent save-button">
-            Save Changes
-        </button>
-        <div class="mdl-tooltip" for="global_switch">
-            Save your current settings
-        </div>
+<div class="main-switch-container">
+    <button id="back_button"
+            class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-js-ripple-effect settings-button">
+        <div data-icon="ei-arrow-left"></div>
+    </button>
+    <div class="mdl-tooltip" for="back_button">
+        Save your current settings and go back.
     </div>
-    <div class="error-text-container">
-        <div class="error-text">
-            <span id="error_text">Error</span>
-            <div class="error-text-button" data-icon="ei-close"></div>
-        </div>
+    <h5>Krotor - Settings</h5>
+    <button id="defaults"
+            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent save-button">
+        Restore Default Settings
+    </button>
+    <button id="save"
+            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent save-button">
+        Save Changes
+    </button>
+    <div class="mdl-tooltip" for="global_switch">
+        Save your current settings
     </div>
-    <hr class="outer-hr" />
-    <div class="main-container main-container--scroll">
-        <!--<div class="demo-card-square mdl-card mdl-shadow--2dp bridges-container">
-            <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">
-                    Tor Bridges
-                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="bridges">
-                        <input type="checkbox" id="bridges" class="mdl-switch__input" />
-                        <span class="mdl-switch__label"></span>
-                    </label>
-                </h2>
-            </div>
-            <div class="mdl-card__supporting-text">
-                Does your Internet Service Provider (ISP) block or otherwise censor connections to the Tor network ?
-            </div>
-            <div id="bridges_card" class="mdl-card__actions mdl-card--border">
-                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="bridges-transport__radio">
-                    <input type="radio" id="bridges-transport__radio" class="mdl-radio__button" name="options" value="1" checked />
-                    <span class="mdl-radio__label">Connect with provided bridges</span>
+</div>
+<div class="error-text-container">
+    <div class="error-text">
+        <span id="error_text">Error</span>
+        <div class="error-text-button" data-icon="ei-close"></div>
+    </div>
+</div>
+<hr class="outer-hr"/>
+<div class="main-container main-container--scroll" id="settings_container">
+    <!--<div class="demo-card-square mdl-card mdl-shadow--2dp bridges-container">
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">
+                Tor Bridges
+                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="bridges">
+                    <input type="checkbox" id="bridges" class="mdl-switch__input" />
+                    <span class="mdl-switch__label"></span>
                 </label>
-                <div class="bridges__dropdown">
-                    <span id="bridges_text">Transport Type</span>
-                    <button id="bridges-inner__dropdown"
-                            class="mdl-button mdl-js-button mdl-button--icon">
-                        <div data-icon="ei-chevron-down"></div>
-                    </button>
-                </div>
-                <ul id="select_bridge" class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
-                    for="bridges-inner__dropdown">
-                    <li class="mdl-menu__item" data-text="flashproxy">flashproxy</li>
-                    <li class="mdl-menu__item" data-text="fte">fte</li>
-                    <li class="mdl-menu__item" data-text="fte-ipv6">fte-ipv6</li>
-                    <li class="mdl-menu__item" data-text="meek-amazon">meek-amazon</li>
-                    <li class="mdl-menu__item" data-text="meek-azure">meek-azure</li>
-                    <li class="mdl-menu__item" data-text="meek-google">meek-google</li>
-                    <li class="mdl-menu__item" data-text="obfs3">obfs3 (recommended)</li>
-                    <li class="mdl-menu__item" data-text="obfs4">obfs4</li>
-                    <li class="mdl-menu__item" data-text="scramblesuit">scramblesuit</li>
-                </ul>
-                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="bridges-custom__radio">
-                    <input type="radio" id="bridges-custom__radio" class="mdl-radio__button" name="options" value="2" />
-                    <span class="mdl-radio__label">Enter Custom Bridges</span>
+            </h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+            Does your Internet Service Provider (ISP) block or otherwise censor connections to the Tor network ?
+        </div>
+        <div id="bridges_card" class="mdl-card__actions mdl-card--border">
+            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="bridges-transport__radio">
+                <input type="radio" id="bridges-transport__radio" class="mdl-radio__button" name="options" value="1" checked />
+                <span class="mdl-radio__label">Connect with provided bridges</span>
+            </label>
+            <div class="bridges__dropdown">
+                <span id="bridges_text">Transport Type</span>
+                <button id="bridges-inner__dropdown"
+                        class="mdl-button mdl-js-button mdl-button--icon">
+                    <div data-icon="ei-chevron-down"></div>
+                </button>
+            </div>
+            <ul id="select_bridge" class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                for="bridges-inner__dropdown">
+                <li class="mdl-menu__item" data-text="flashproxy">flashproxy</li>
+                <li class="mdl-menu__item" data-text="fte">fte</li>
+                <li class="mdl-menu__item" data-text="fte-ipv6">fte-ipv6</li>
+                <li class="mdl-menu__item" data-text="meek-amazon">meek-amazon</li>
+                <li class="mdl-menu__item" data-text="meek-azure">meek-azure</li>
+                <li class="mdl-menu__item" data-text="meek-google">meek-google</li>
+                <li class="mdl-menu__item" data-text="obfs3">obfs3 (recommended)</li>
+                <li class="mdl-menu__item" data-text="obfs4">obfs4</li>
+                <li class="mdl-menu__item" data-text="scramblesuit">scramblesuit</li>
+            </ul>
+            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="bridges-custom__radio">
+                <input type="radio" id="bridges-custom__radio" class="mdl-radio__button" name="options" value="2" />
+                <span class="mdl-radio__label">Enter Custom Bridges</span>
+            </label>
+            <div class="mdl-textfield mdl-js-textfield">
+                <textarea class="mdl-textfield__input" type="text" rows="3" id="bridges-custom__text" disabled></textarea>
+                <label class="mdl-textfield__label" for="bridges-custom__text">Enter bridge relays (One per line)</label>
+            </div>
+        </div>
+    </div>-->
+    <div class="demo-card-square mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">
+                Configure Proxy
+                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="proxy">
+                    <input type="checkbox" id="proxy" class="mdl-switch__input"/>
+                    <span class="mdl-switch__label"></span>
                 </label>
-                <div class="mdl-textfield mdl-js-textfield">
-                    <textarea class="mdl-textfield__input" type="text" rows="3" id="bridges-custom__text" disabled></textarea>
-                    <label class="mdl-textfield__label" for="bridges-custom__text">Enter bridge relays (One per line)</label>
-                </div>
-            </div>
-        </div>-->
-        <div class="demo-card-square mdl-card mdl-shadow--2dp z-index--2">
-            <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">
-                    Configure Proxy
-                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="proxy">
-                        <input type="checkbox" id="proxy" class="mdl-switch__input" />
-                        <span class="mdl-switch__label"></span>
-                    </label>
-                </h2>
-            </div>
-            <div class="mdl-card__supporting-text">
-                Does this device need to use a proxy to access the internet?
-            </div>
-            <div id="proxy_card" class="mdl-card__actions mdl-card--border">
-                <div class="proxy__dropdown">
-                    <button id="proxy_text_outer" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                        <span id="proxy_text">Proxy Type</span>                        
-                    </button>
-                    <button id="proxy-inner__dropdown"
-                            class="mdl-button mdl-js-button mdl-button--icon">
-                        <div data-icon="ei-chevron-down"></div>
-                    </button>
-                </div>
-                <ul id="select_proxy" class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
-                    for="proxy-inner__dropdown">
-                    <li class="mdl-menu__item" data-text="socks4">Socks 4</li>
-                    <li class="mdl-menu__item" data-text="socks5">Socks 5</li>
-                    <!--li class="mdl-menu__item" data-text="http">HTTP</li-->
-                    <li class="mdl-menu__item" data-text="http/https">HTTP/HTTPS</li>
-                </ul>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" id="proxy__address" />
-                    <label class="mdl-textfield__label" for="proxy__address">IP Address or hostname</label>
-                </div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="proxy__port" />
-                    <label class="mdl-textfield__label" for="proxy__port">Port</label>
-                    <span class="mdl-textfield__error">Input is not a number!</span>
-                </div>
-                <!--div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" id="proxy__username" />
-                    <label class="mdl-textfield__label" for="proxy__username">Username</label>
-                </div-->
-                <!--div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="password" id="proxy__password" />
-                    <label class="mdl-textfield__label" for="proxy__password">Password</label>
-                </div-->
-            </div>
+            </h2>
         </div>
-        <div class="demo-card-square mdl-card mdl-shadow--2dp">
-            <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">
-                    Tor (Socks) Proxy Port
-                </h2>
-            </div>
-            <div class="mdl-card__supporting-text">
-                Change the default port on which tor socks proxy will run.
-                Enter a number between 1000-65535, default is 9999
-            </div>
-            <div id="cport_card" class="mdl-card__actions mdl-card--border cportcard expand">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="cport__port" value="9999" />
-                    <span class="mdl-textfield__error">Input is not a number!</span>
-                </div>
-            </div>
+        <div class="mdl-card__supporting-text">
+            Does this device need to use a proxy to access the internet?
         </div>
-        <div class="demo-card-square mdl-card mdl-shadow--2dp">
-            <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">
-                    Accessible Ports
-                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="acsport">
-                        <input type="checkbox" id="acsport" class="mdl-switch__input" />
-                        <span class="mdl-switch__label"></span>
-                    </label>
-                </h2>
+        <div id="proxy_card" class="mdl-card__actions mdl-card--border">
+            <div class="proxy__dropdown">
+                <button id="proxy_text_outer" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                    <span id="proxy_text">Proxy Type</span>
+                </button>
+                <button id="proxy-inner__dropdown"
+                        class="mdl-button mdl-js-button mdl-button--icon">
+                    <div data-icon="ei-chevron-down"></div>
+                </button>
             </div>
-            <div class="mdl-card__supporting-text">
-                Does this computer goes through a firewall that only allows connections to certain ports ?
+            <ul id="select_proxy" class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                for="proxy-inner__dropdown">
+                <li class="mdl-menu__item" data-text="socks4">Socks 4</li>
+                <li class="mdl-menu__item" data-text="socks5">Socks 5</li>
+                <!--li class="mdl-menu__item" data-text="http">HTTP</li-->
+                <li class="mdl-menu__item" data-text="http/https">HTTP/HTTPS</li>
+            </ul>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="proxy__address"/>
+                <label class="mdl-textfield__label" for="proxy__address">IP Address or hostname</label>
             </div>
-            <div id="acsport_card" class="mdl-card__actions mdl-card--border">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" id="acsport__port" value="80,443" />
-                    <label class="mdl-textfield__label" for="acsport__port">Ports (comma separated)</label>
-                </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="proxy__port"/>
+                <label class="mdl-textfield__label" for="proxy__port">Port</label>
+                <span class="mdl-textfield__error">Input is not a number!</span>
             </div>
+            <!--div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="proxy__username" />
+                <label class="mdl-textfield__label" for="proxy__username">Username</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="password" id="proxy__password" />
+                <label class="mdl-textfield__label" for="proxy__password">Password</label>
+            </div-->
         </div>
-        <div class="demo-card-square mdl-card mdl-shadow--2dp">
-            <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">
-                    Auto Start Tor
-                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="autostart_tor">
-                        <input type="checkbox" id="autostart_tor" class="mdl-switch__input" />
-                        <span class="mdl-switch__label"></span>
-                    </label>
-                </h2>
-            </div>
-            <div class="mdl-card__supporting-text">
-                Auto start tor as soon as you start this app, (the app will not run at system or chrome startup)
-            </div>
+    </div>
+    <div class="demo-card-square mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">
+                Accessible Ports
+                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="acsport">
+                    <input type="checkbox" id="acsport" class="mdl-switch__input"/>
+                    <span class="mdl-switch__label"></span>
+                </label>
+            </h2>
         </div>
-        <div class="demo-card-square mdl-card mdl-shadow--2dp">
-            <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">
-                    Use Dark Theme
-                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="dt">
-                        <input type="checkbox" id="dt" class="mdl-switch__input" />
-                        <span class="mdl-switch__label"></span>
-                    </label>
-                </h2>
-            </div>
-            <div class="mdl-card__supporting-text">
-                Use a dark theme..
+        <div class="mdl-card__supporting-text">
+            Does this computer goes through a firewall that only allows connections to certain ports ?
+        </div>
+        <div id="acsport_card" class="mdl-card__actions mdl-card--border">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="acsport__port" value="80,443"/>
+                <label class="mdl-textfield__label" for="acsport__port">Ports (comma separated)</label>
             </div>
         </div>
     </div>
-    <script src="js/settings.js"></script>
+
+    <div class="demo-card-square mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">
+                Autostart Tor
+                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="autostart_tor">
+                    <input type="checkbox" id="autostart_tor" class="mdl-switch__input"/>
+                    <span class="mdl-switch__label"></span>
+                </label>
+            </h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+            Start tor as soon as you start this app,(the app will NOT run at system or chrome startup)
+        </div>
+    </div>
+    <div class="demo-card-square mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">
+                Use Dark Theme
+                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="dt">
+                    <input type="checkbox" id="dt" class="mdl-switch__input"/>
+                    <span class="mdl-switch__label"></span>
+                </label>
+            </h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+            Use a dark theme(default), uncheck this to switch to light theme.
+        </div>
+    </div>
+    <div class="demo-card-square mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">
+                Tor (Socks) Proxy Port
+            </h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+            Change the default port on which tor socks proxy will run.
+            Enter a number between 1000-65535, default is 9999
+        </div>
+        <div id="cport_card" class="mdl-card__actions mdl-card--border cportcard expand">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="cport__port"
+                       value="9999"/>
+                <span class="mdl-textfield__error">Input is not a number!</span>
+            </div>
+        </div>
+    </div>
+    <div class="demo-card-square mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">
+                Advance Options
+                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="adv_opt">
+                    <input type="checkbox" id="adv_opt" class="mdl-switch__input"/>
+                    <span class="mdl-switch__label"></span>
+                </label>
+            </h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+            exit node, proxy username pass etc.
+        </div>
+        <div id="adv_opt_card" class="mdl-card__actions mdl-card--border">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <textarea class="mdl-textfield__input" rows="2" type="text" id="adv_opt_text" value="80,443"></textarea>
+                <label class="mdl-textfield__label" for="adv_opt_text">OPTION1 value1 OPTION2 value2 </label>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/settings.js"></script>
 </body>
 </html>

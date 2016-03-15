@@ -48,6 +48,10 @@
             class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent advanced-button">
         <span id="start_button_text">Start Tor</span>
     </button>
+    <button id="anonymity"
+            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent advanced-button">
+        Are you browsing anonymously ?
+    </button>
     <label id="autostart_checkbox_cover" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect autostart_fix"
            for="autostart_checkbox">
         <input type="checkbox" id="autostart_checkbox" class="mdl-checkbox__input"/>
@@ -72,36 +76,43 @@
                 Thanks for installing KroTor, with this app you can access internet via Tor. [visit any blocked
                 websites, browse anonymously etc]<br/>
                 Once started, tor socks proxy will be available <em>on your system</em> which can be accessed at
-                127.0.0.1:9999
+                127.0.0.1:9999<br/>
+                This app is open sourced, for details click <a href="https://deepankar.io/krotor"
+                                                               target="_blank">here</a>.
             </p>
             <hr/>
             <p>
-                <strong>Usage Instructions</strong>
-                <br/>Chrome Apps (such as this one) cannot set the proxy settings in the Chrome browser,
-                <em> In order to use Tor Socks proxy created by this app, please configure any extension or system
-                    settings accordingly.</em> <br/>
-                <em>For example:</em> <br/>
-                You can use extension <a
+                <strong>Instructions</strong><br/>
+                In order to use Tor Socks proxy created by this app, please configure any extension/system
+                settings/apps accordingly.<br/>
+                <em>Following instructions are only applicable for Google Chrome.</em><br/>
+                Chrome Apps (such as this one) cannot set the proxy settings in the Chrome browser, only extensions can
+                do so.As an example, one can use extension <a
                     href="https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif"
-                    target="_blank"> SwitchyOmega</a> with following settings<br/>
+                    target="_blank">ProxySwitchyOmega(open sourced)</a><br/>
+                <strong>Setup</strong>
+                <em>This is one time process.</em><br/>
+                Install <a
+                    href="https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif"
+                    target="_blank">ProxySwitchyOmega</a> or any proxy extension.<br/>
+                Create a proxy profile named KroTor with following settings.<br/>
                 protocol : socks5<br/>
                 server : 127.0.0.1<br/>
                 port : 9999 (or the tor port you defined in settings)<br/>
-                <em>In future, there is plan to create a companion extension for this app.</em>
+                <strong>Using it</strong><br/>
+                1. Run KroTor, click on Start Tor, <em>make sure you see "Bootstrapped 100%" in terminal window(app's
+                middle section with black background)</em><br/>
+                2. Enable KroTor proxy in SwitchyOmega's dropdown menu(click its icon i.e. black O on right side of
+                address bar)
             </p>
             <hr/>
             <p>
-                To verify that you are on Tor network, please visit : <a href="https://check.torproject.org" target="_blank">https://check.torproject.org</a>
+                To verify that you are on Tor network, please visit : <a href="https://check.torproject.org"
+                                                                         target="_blank">https://check.torproject.org</a>
             </p>
             <hr/>
             <p>
                 If Tor takes too long to connect, try enabling/modifying accessible ports in settings.
-            </p>
-            <hr/>
-            <p>
-                Please note that this Chrome App is not a substitute of <a
-                    href="https://www.torproject.org/download/download-easy.html.en" target="_blank">Tor Browser
-                Bundle</a>
             </p>
             <hr/>
             <p>
@@ -110,7 +121,28 @@
             </p>
             <hr/>
             <p>
-                This app lacks the functionality to configure custom bridges and pluggable transports. There is plan to implement it but I can't give ETA.
+                <Strong>Advance options.</Strong><br/>
+                If you want set exitnodes, provide username/password for (network)proxy etc, you can do so by enabling
+                advance options in settings and provide them in format OPTIONS values<br/>
+                As an example:<br/>
+                For exitnodes: ExitNodes node,node,…<br/>
+                For username/password for (network)proxy: HTTPSProxyAuthenticator username:password (this is stored in
+                cleartext in your browser locally.<br/>
+                You can give multiple options, make sure there is a space between them i.e. OPTIONS1 values1 OPTIONS2
+                values2 ...<br/>
+                For more details see <a href="https://www.torproject.org/docs/tor-manual.html.en" target="_blank">Tor
+                manual</a>
+            </p>
+            <hr/>
+            <p>
+                This app lacks the functionality to configure custom bridges, pluggable transports. There is plan to
+                implement it but I can't give ETA.
+            </p>
+            <hr/>
+            <p>
+                Please note that this Chrome App is not a substitute of <a
+                    href="https://www.torproject.org/download/download-easy.html.en" target="_blank">Tor Browser
+                Bundle</a>
             </p>
         </div>
         <div class="mdl-card__actions mdl-card--border">
@@ -120,6 +152,77 @@
         </div>
     </div>
 </div>
+
+<!--Are you browsing anonymously-->
+<div id="anonymity-help--overlay" class="first-time-dialog--overlay">
+    <div id="anonymity_overlay" class="demo-card-square mdl-card mdl-shadow--2dp mdl-card--scrollable">
+        <div class="mdl-card__title">
+            <h5>
+                Instructions to check if you are accessing internet via Tor and browsing anonymously.
+            </h5>
+        </div>
+        <div class="mdl-card__supporting-text">
+            <strong>Before proceeding make sure that you have configured everything correctly, click help button to see
+                the instructions.</strong>
+            <hr/>
+            <p>
+                To verify that you are on Tor network, please visit : <a href="https://check.torproject.org"
+                                                                         target="_blank">https://check.torproject.org</a>
+            </p>
+            <hr/>
+            <p>
+                To check if your local ip (your unique identifier on internet) is leaking or not please visit : <a
+                    href="https://ipleak.net" target="_blank">https://ipleak.net</a>
+                <br/> To avoid webrtc leaks follow instructions given at <a href="https://ipleak.net/#webrtcleak"
+                                                                            target="_blank">https://ipleak.net/#webrtcleak</a><br/>
+                Note to window users:<br/>
+                Window's system proxy settings are unreliable and on top of that <a href="https://ipleak.net/#dnsleak"
+                                                                                    target="_blank">DNS queries are are
+                also unreliable on it</a>.<br/>
+            </p>
+            <hr/>
+            <p>
+                As a general rule:<br/>
+                Make sure you use KroTor only with those applications/operating systems which have support for
+                socks4/socks5 proxy support (remote dns resolution). Example: for Google Chrome you can use switchyomega
+                extension.
+            </p>
+            <hr/>
+            <p>
+                <strong>Remember anonymity and privacy are two different things.</strong>
+            </p>
+            <hr/>
+            <p>
+                <strong>Note from developer (<a href="https://deepankar.io" target="_blank"> Deepankar
+                    Tyagi </a>):</strong><br/>
+                These are just my opinions and are not endorsed by anyone.<br/>
+                Two main factors are responsible for being anonymous :<br/>
+                1. The traffic coming to and from the user's system must not be traceable back to user's system.(The way
+                in which the user's system connects to outside world must not lead to disclosure of user's
+                identity)<br/>
+                2. The action of user must not lead to disclosure of user's identity.<br/>
+                KroTor(Tor Network) takes care of first part and user is responsible for second part.<br/>
+                IMHO, no one can guarantee a 100% anonymity or for that matter I definitely cannot(because of second
+                part), that being said it is highly likely that user will remain anonymous without any extra steps other
+                than setting KroTor correctly.<br/>
+                To increase the chances of being anonymous on chrome, run chrome in incognito mode with all the
+                extensions(except proxy extension) disabled, password auto fetching disabled and avoid using
+                applications/websites which do not honor proxy/privacy settings.(you can disable the JavaScript also)
+                For more details visit:
+                <a href="https://www.torproject.org/download/download#warning" target="_blank">https://www.torproject.org/download/download#warning</a>
+                <br/>
+                <strong>The developer is not responsible for any of user's actions or user's actions' consequences.
+                    This app is provided as is without any guarantees.</strong>
+            </p>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <button id="anonymity_ok_button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                Ok
+            </button>
+        </div>
+    </div>
+</div>
+
 <script src="js/main.js"></script>
 </body>
 </html>

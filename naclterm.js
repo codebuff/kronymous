@@ -4,19 +4,13 @@
  * found in the LICENSE file.
  */
 
+/* globals lib, NaClProcessManager, hterm */
+
 'use strict';
 
 lib.rtdep('lib.f',
           'hterm',
           'NaClProcessManager');
-
-// CSP means that we can't kick off the initialization from the html file,
-// so we do it like this instead.
-window.onload = function() {
-  lib.init(function() {
-    NaClTerm.init();
-  });
-};
 
 /**
  * This class uses the NaClProcessManager to run NaCl executables within an
@@ -39,12 +33,13 @@ function NaClTerm(argv) {
 
   this.print = this.io.print.bind(this.io);
 
-  var mgr = this.processManager = new NaClProcessManager();
-  mgr.setStdoutListener(this.handleStdout_.bind(this));
-  mgr.setErrorListener(this.handleError_.bind(this));
-  mgr.setRootProgressListener(this.handleRootProgress_.bind(this));
-  mgr.setRootLoadListener(this.handleRootLoad_.bind(this));
-};
+  this.processManager = new NaClProcessManager();
+  this.processManager.setStdoutListener(this.handleStdout_.bind(this));
+  this.processManager.setErrorListener(this.handleError_.bind(this));
+  this.processManager.setRootProgressListener(
+    this.handleRootProgress_.bind(this));
+  this.processManager.setRootLoadListener(this.handleRootLoad_.bind(this));
+}
 
 /**
  * Flag for cyan coloring in the terminal.
@@ -67,21 +62,21 @@ NaClTerm.CONTROL_C = 3;
 /**
  * Add the appropriate hooks to HTerm to start the session.
  */
-NaClTerm.prototype.run = function() {
+NaClTerm.prototype.run = function () {
   this.io.onVTKeystroke = this.onVTKeystroke_.bind(this);
   this.io.sendString = this.onVTKeystroke_.bind(this);
   this.io.onTerminalResize = this.onTerminalResize_.bind(this);
 
   this.print(NaClTerm.ANSI_CYAN);
-}
+};
 
 /**
  * Static initializer called from index.html.
  *
  * This constructs a new Terminal instance and instructs it to run a NaClTerm.
  */
-NaClTerm.init = function() {
-  var profileName = lib.f.parseQuery(document.location.search)['profile'];
+NaClTerm.init = function () {
+  var profileName = lib.f.parseQuery(document.location.search).profile;
   var terminal = new hterm.Terminal(profileName);
   terminal.decorate(document.querySelector('#terminal'));
 
@@ -113,13 +108,13 @@ NaClTerm.init = function() {
  * @private
  * @param {string} msg The string sent to stdout.
  */
-NaClTerm.prototype.handleStdout_ = function(msg) {
+NaClTerm.prototype.handleStdout_ = function (msg) {
   if (!this.loaded) {
     this.bufferedOutput += msg;
   } else {
     this.print(msg);
   }
-}
+};
 
 /**
  * Handle error event from NaCl.
@@ -127,24 +122,24 @@ NaClTerm.prototype.handleStdout_ = function(msg) {
  * @param {string} cmd The name of the process with the error.
  * @param {string} err The error message.
  */
-NaClTerm.prototype.handleError_ = function(cmd, err) {
+NaClTerm.prototype.handleError_ = function (cmd, err) {
   this.print(cmd + ': ' + err + '\n');
-}
+};
 
 /**
  * Notify the user when we are done loading a URL.
  * @private
  */
-NaClTerm.prototype.doneLoadingUrl_ = function() {
+NaClTerm.prototype.doneLoadingUrl_ = function () {
   var width = this.width;
-  this.print('\r' + Array(width+1).join(' '));
+  this.print('\r' + ' '.repeat(width + 1));
   var message = '\rLoaded ' + this.lastUrl;
   if (this.lastTotal) {
-    var kbsize = Math.round(this.lastTotal/1024)
-    message += ' ['+ kbsize + ' KiB]';
+    var kbsize = Math.round(this.lastTotal / 1024);
+    message += ' [' + kbsize + ' KiB]';
   }
-  this.print(message.slice(0, width) + '\n')
-}
+  this.print(message.slice(0, width) + '\n');
+};
 
 /**
  * Handle load progress event from NaCl for the root process.
@@ -154,16 +149,19 @@ NaClTerm.prototype.doneLoadingUrl_ = function() {
  * @param {number} loaded The number of bytes that have been loaded.
  * @param {number} total The total number of bytes to be loaded.
  */
-NaClTerm.prototype.handleRootProgress_ = function(
+NaClTerm.prototype.handleRootProgress_ = function (
       url, lengthComputable, loaded, total) {
-  if (url !== undefined)
+  if (url !== undefined) {
     url = url.substring(url.lastIndexOf('/') + 1);
+  }
 
-  if (this.lastUrl && this.lastUrl !== url)
-    this.doneLoadingUrl_()
+  if (this.lastUrl && this.lastUrl !== url) {
+    this.doneLoadingUrl_();
+  }
 
-  if (!url)
+  if (!url) {
     return;
+  }
 
   this.lastUrl = url;
   this.lastTotal = total;
@@ -177,17 +175,18 @@ NaClTerm.prototype.handleRootProgress_ = function(
   }
 
   this.print('\r' + message.slice(-this.width));
-}
+};
 
 /**
  * Handle load end event from NaCl for the root process.
  * @private
  */
-NaClTerm.prototype.handleRootLoad_ = function() {
-  if (this.lastUrl)
+NaClTerm.prototype.handleRootLoad_ = function () {
+  if (this.lastUrl) {
     this.doneLoadingUrl_();
-  else
+  } else {
     this.print('Loaded.\n');
+  }
 
   this.print(NaClTerm.ANSI_RESET);
 
@@ -197,7 +196,7 @@ NaClTerm.prototype.handleRootLoad_ = function() {
   this.loaded = true;
   this.print(this.bufferedOutput);
   this.bufferedOutput = '';
-}
+};
 
 /**
  * Clean up once the root process exits.
@@ -205,8 +204,8 @@ NaClTerm.prototype.handleRootLoad_ = function() {
  * @param {number} pid The PID of the process that exited.
  * @param {number} status The exit code of the process.
  */
-NaClTerm.prototype.handleExit_ = function(pid, status) {
-  this.print(NaClTerm.ANSI_CYAN)
+NaClTerm.prototype.handleExit_ = function (pid, status) {
+  this.print(NaClTerm.ANSI_CYAN);
 
   // The root process finished.
   if (status === -1) {
@@ -218,11 +217,11 @@ NaClTerm.prototype.handleExit_ = function(pid, status) {
   }
   this.argv.io.pop();
   // Remove window close handler.
-  window.onbeforeunload = function() { return null; };
+  window.onbeforeunload = function () { return null; };
   if (this.argv.onExit) {
     this.argv.onExit(status);
   }
-}
+};
 
 /**
  * Spawn the root process (usually bash).
@@ -231,7 +230,7 @@ NaClTerm.prototype.handleExit_ = function(pid, status) {
  * We delay this call until the first terminal resize event so that we start
  * with the correct size.
  */
-NaClTerm.prototype.spawnRootProcess_ = function() {
+NaClTerm.prototype.spawnRootProcess_ = function () {
   var self = this;
   var argv = NaClTerm.argv || [];
   var env = NaClTerm.env || [];
@@ -239,18 +238,18 @@ NaClTerm.prototype.spawnRootProcess_ = function() {
   argv = [NaClTerm.nmf].concat(argv);
 
   try {
-    var handleSuccess = function(naclType) {
+    var handleSuccess = function (naclType) {
       self.print('Loading NaCl module.\n');
       self.processManager.spawn(
-          NaClTerm.nmf, argv, env, cwd, naclType, null, function(rootPid) {
+          NaClTerm.nmf, argv, env, cwd, naclType, null, -1, function(rootPid) {
         // Warn if we close while still running.
-        window.onbeforeunload = function() {
+        window.onbeforeunload = function () {
           return 'Processes still running!';
         };
         self.processManager.waitpid(rootPid, 0, self.handleExit_.bind(self));
       });
     };
-    var handleFailure = function(message) {
+    var handleFailure = function (message) {
       self.print(message);
     };
     self.processManager.checkUrlNaClManifestType(
@@ -260,7 +259,7 @@ NaClTerm.prototype.spawnRootProcess_ = function() {
   }
 
   self.started = true;
-}
+};
 
 /**
  * Handle hterm terminal resize events.
@@ -268,19 +267,19 @@ NaClTerm.prototype.spawnRootProcess_ = function() {
  * @param {number} width The width of the terminal.
  * @param {number} height The height of the terminal.
  */
-NaClTerm.prototype.onTerminalResize_ = function(width, height) {
+NaClTerm.prototype.onTerminalResize_ = function (width, height) {
   this.processManager.onTerminalResize(width, height);
   if (!this.started) {
     this.spawnRootProcess_();
   }
-}
+};
 
 /**
  * Handle hterm keystroke events.
  * @private
  * @param {string} str The characters sent by hterm.
  */
-NaClTerm.prototype.onVTKeystroke_ = function(str) {
+NaClTerm.prototype.onVTKeystroke_ = function (str) {
   try {
     if (str.charCodeAt(0) === NaClTerm.CONTROL_C) {
       if (this.processManager.sigint()) {
@@ -292,4 +291,12 @@ NaClTerm.prototype.onVTKeystroke_ = function(str) {
   } catch (e) {
     this.print(e.message);
   }
-}
+};
+
+// CSP means that we can't kick off the initialization from the html file,
+// so we do it like this instead.
+window.onload = function () {
+  lib.init(function () {
+    NaClTerm.init();
+  });
+};
