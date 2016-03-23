@@ -40,7 +40,7 @@ function populateArgv() {
     }
 
     if (saved_settings.adv_opt != "none") {
-        NaClTerm.argv = NaClTerm.argv.concat([saved_settings.adv_opt])
+        NaClTerm.argv = NaClTerm.argv.concat(saved_settings.adv_opt.trim().split(" "));
     }
 
 }
