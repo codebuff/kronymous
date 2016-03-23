@@ -1,4 +1,2 @@
-- authentication for proxy  
-- adding custom bridges  
-- running app in background  
-- advance mode (user can pass arguments directly to binary)
+- adding custom bridges support
+- running app in background
