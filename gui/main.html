@@ -23,11 +23,11 @@
 </head>
 <body>
 <div class="main-switch-container main-switch-container--centered">
-    <h5>Krotor</h5>
+    <h5>Kronymous</h5>
 </div>
 <hr class="outer-hr"/>
 <h6 class="h6padding--fix">
-    <span id="tor_status">Tor is not running.</span>
+    <span id="tor_status">Tor Proxy is not running.</span>
     <button id="settings_button"
             class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent settings-button advanced-button">
         <div data-icon="ei-gear"></div>
@@ -46,7 +46,7 @@
     <div id="p1" class="mdl-progress mdl-js-progress"></div>
     <button id="start_button"
             class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent advanced-button">
-        <span id="start_button_text">Start Tor</span>
+        <span id="start_button_text">Start Tor Proxy</span>
     </button>
     <button id="anonymity"
             class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent advanced-button">
@@ -55,7 +55,7 @@
     <label id="autostart_checkbox_cover" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect autostart_fix"
            for="autostart_checkbox">
         <input type="checkbox" id="autostart_checkbox" class="mdl-checkbox__input"/>
-        <span class="mdl-checkbox__label">Autostart Tor</span>
+        <span class="mdl-checkbox__label">Autostart Tor Proxy</span>
     </label>
 
     <!--div class="mdl-tooltip" for="autostart_checkbox_cover">
@@ -73,19 +73,20 @@
         </div>
         <div class="mdl-card__supporting-text">
             <p>
-                Thanks for installing KroTor, with this app you can access internet via Tor. [visit any blocked
+                Thanks for installing Kronymous, with this app you can access internet via Tor Network. [visit any blocked
                 websites, browse anonymously etc]<br/>
                 Once started, tor socks proxy will be available <em>on your system</em> which can be accessed at
                 127.0.0.1:9999<br/>
-                This app is open sourced, for details click <a href="https://deepankar.io/krotor"
-                                                               target="_blank">here</a>.
+                This app is open sourced, for details click <a href="https://deepankar.io/kronymous"
+                                                               target="_blank">here</a>.<br/>
+                Earlier this app's name was KroTor, it has been changed to Kronymous in order comply with Tor trademark rules.
             </p>
             <hr/>
             <p>
                 <strong>Instructions</strong><br/>
                 In order to use Tor Socks proxy created by this app, please configure any extension/system
                 settings/apps accordingly.<br/>
-                <em>Following instructions are only applicable for Google Chrome.</em><br/>
+                <em>Following instructions are only applicable for Google Chrome/Chrome OS.</em><br/>
                 Chrome Apps (such as this one) cannot set the proxy settings in the Chrome browser, only extensions can
                 do so.As an example, one can use extension <a
                     href="https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif"
@@ -95,14 +96,14 @@
                 Install <a
                     href="https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif"
                     target="_blank">ProxySwitchyOmega</a> or any proxy extension.<br/>
-                Create a proxy profile named KroTor with following settings.<br/>
+                Create a proxy profile named Kronymous with following settings.<br/>
                 protocol : socks5<br/>
                 server : 127.0.0.1<br/>
                 port : 9999 (or the tor port you defined in settings)<br/>
                 <strong>Using it</strong><br/>
-                1. Run KroTor, click on Start Tor, <em>make sure you see "Bootstrapped 100%" in terminal window(app's
+                1. Run Kronymous, click on Start Tor, <em>make sure you see "Bootstrapped 100%" in terminal window(app's
                 middle section with black background)</em><br/>
-                2. Enable KroTor proxy in SwitchyOmega's dropdown menu(click its icon i.e. black O on right side of
+                2. Enable Kronymous proxy in SwitchyOmega's dropdown menu(click its icon i.e. black O on right side of
                 address bar)
             </p>
             <hr/>
@@ -112,11 +113,11 @@
             </p>
             <hr/>
             <p>
-                If Tor takes too long to connect, try enabling/modifying accessible ports in settings.
+                If it takes too long to connect, try enabling/modifying accessible ports in settings.
             </p>
             <hr/>
             <p>
-                If you face any issue, <a href="https://codebuff.net/krotor/support" target="_blank">please ask on the
+                If you face any issue, <a href="https://deepankar.io/kronymous/support" target="_blank">please ask on the
                 support page</a>.
             </p>
             <hr/>
@@ -140,9 +141,12 @@
             </p>
             <hr/>
             <p>
+                This binary running in this app was ported and compiled from official Tor Codebase<br/>
                 Please note that this Chrome App is not a substitute of <a
                     href="https://www.torproject.org/download/download-easy.html.en" target="_blank">Tor Browser
-                Bundle</a>
+                Bundle</a><br/>
+                This app is produced independently from the Tor® anonymity software and carries no guarantee from The Tor Project about quality, suitability or anything else.<br/>
+                There is plan to get it merged in official Tor Project.
             </p>
         </div>
         <div class="mdl-card__actions mdl-card--border">
@@ -158,7 +162,7 @@
     <div id="anonymity_overlay" class="demo-card-square mdl-card mdl-shadow--2dp mdl-card--scrollable">
         <div class="mdl-card__title">
             <h5>
-                Instructions to check if you are accessing internet via Tor and browsing anonymously.
+                Instructions to check if you are accessing internet via Tor Network and browsing anonymously.
             </h5>
         </div>
         <div class="mdl-card__supporting-text">
@@ -183,7 +187,7 @@
             <hr/>
             <p>
                 As a general rule:<br/>
-                Make sure you use KroTor only with those applications/operating systems which have support for
+                Make sure you use Kronymous only with those applications/operating systems which have support for
                 socks4/socks5 proxy support (remote dns resolution). Example: for Google Chrome you can use switchyomega
                 extension.
             </p>
@@ -201,17 +205,17 @@
                 in which the user's system connects to outside world must not lead to disclosure of user's
                 identity)<br/>
                 2. The action of user must not lead to disclosure of user's identity.<br/>
-                KroTor(Tor Network) takes care of first part and user is responsible for second part.<br/>
+                Kronymous (Tor Network) takes care of first part and user is responsible for second part.<br/>
                 IMHO, no one can guarantee a 100% anonymity or for that matter I definitely cannot(because of second
                 part), that being said it is highly likely that user will remain anonymous without any extra steps other
-                than setting KroTor correctly.<br/>
+                than setting Kronymous correctly.<br/>
                 To increase the chances of being anonymous on chrome, run chrome in incognito mode with all the
                 extensions(except proxy extension) disabled, password auto fetching disabled and avoid using
                 applications/websites which do not honor proxy/privacy settings.(you can disable the JavaScript also)
                 For more details visit:
                 <a href="https://www.torproject.org/download/download#warning" target="_blank">https://www.torproject.org/download/download#warning</a>
                 <br/>
-                <strong>The developer is not responsible for any of user's actions or user's actions' consequences.
+                <strong>The developer take no responsibility for any of user's actions or user's actions' consequences.
                     This app is provided as is without any guarantees.</strong>
             </p>
         </div>
