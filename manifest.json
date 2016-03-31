@@ -1,14 +1,14 @@
 {
-  "name": "KroTor - Access internet via TOR",
-  "short_name": "KroTor",
+  "name": "Kronymous - Access internet via Tor Network",
+  "short_name": "Kronymous",
   "description": "",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "manifest_version": 2,
   "minimum_chrome_version": "36",
   "icons": {
-    "16": "krotor_16.png",
-    "48": "krotor_48.png",
-    "128": "krotor_128.png"
+    "16": "kronymous_16.png",
+    "48": "kronymous_48.png",
+    "128": "kronymous_128.png"
   },
   "offline_enabled": false,
   "permissions": [

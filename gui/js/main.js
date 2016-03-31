@@ -63,13 +63,13 @@ document.getElementById('anonymity_ok_button').addEventListener("click", functio
 
 //start / restart tor button
 document.getElementById('start_button').addEventListener("click", function () {
-    if (document.getElementById('start_button_text').innerHTML == "Start Tor") {
+    if (document.getElementById('start_button_text').innerHTML == "Start Tor Proxy") {
         document.getElementById('terminal').classList.add('visible');
         lib.init(function () {
             runTor();
         });
-        updateTorStatus( "Tor is running, see below for details.");
-        document.getElementById('start_button_text').innerHTML = "Restart Tor";
+        updateTorStatus( "Tor Proxy is running, see below for details.");
+        document.getElementById('start_button_text').innerHTML = "Restart Tor Proxy";
         document.getElementById('anonymity').setAttribute('style', 'display:inline-block');
     } else {
         chrome.storage.local.set({ restarting_tor: true });
@@ -78,7 +78,7 @@ document.getElementById('start_button').addEventListener("click", function () {
             location.href = "restart.html";
         }, 300);
         //update tor status text
-        updateTorStatus("Restarting Tor ...");
+        updateTorStatus("Restarting Tor Proxy ...");
     }
 });
 
