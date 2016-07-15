@@ -364,6 +364,11 @@ body.hide {
   display: block;
   margin: 0 auto; }
 
+.first-time-dialog--overlay .demo-card-square #changelog_ok_button {
+    display: block;
+    margin: 0 auto;
+}
+
 .first-time-dialog--overlay.visible {
   opacity: 1;
   pointer-events: all; }

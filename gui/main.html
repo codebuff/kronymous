@@ -73,7 +73,8 @@
         </div>
         <div class="mdl-card__supporting-text">
             <p>
-                Thanks for installing Kronymous, with this app you can access internet via Tor Network. [visit any blocked
+                Thanks for installing Kronymous v0.2.1, with this app you can access internet via Tor Network. [visit
+                any blocked
                 websites, browse anonymously etc]<br/>
                 Once started, tor socks proxy will be available <em>on your system</em> which can be accessed at
                 127.0.0.1:9999<br/>
@@ -148,6 +149,20 @@
                 This app is produced independently from the Tor® anonymity software and carries no guarantee from The Tor Project about quality, suitability or anything else.<br/>
                 There is plan to get it merged in official Tor Project.
             </p>
+            <hr/>
+            <p>
+                <strong>Changelog</strong><br/>
+                v 0.2.1 <br/>
+                Fixed big related to exitnode, now setting exitnode should work fine.<br/>
+                v 0.2.0 <br/>
+                Changed name from krotor to kronymous to comply with tor trademark rules.<br/>
+                v 0.1.9 <br/>
+                Fixed argv parsing bug<br/>
+                v 0.1.8 <br/>
+                Added functionality to specify advance settings such as exitnode, proxy authentication etc.<br/>
+                Recompiled tor binary with newer toolchain<br/>
+
+            </p>
         </div>
         <div class="mdl-card__actions mdl-card--border">
             <button id="ok_button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
@@ -215,12 +230,44 @@
                 For more details visit:
                 <a href="https://www.torproject.org/download/download#warning" target="_blank">https://www.torproject.org/download/download#warning</a>
                 <br/>
-                <strong>The developer take no responsibility for any of user's actions or user's actions' consequences.
+                <strong>The developer takes no responsibility for any of user's actions or user's actions' consequences.
                     This app is provided as is without any guarantees.</strong>
             </p>
         </div>
         <div class="mdl-card__actions mdl-card--border">
             <button id="anonymity_ok_button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                Ok
+            </button>
+        </div>
+    </div>
+</div>
+
+<!--Changelog-->
+<div id="changelog" class="first-time-dialog--overlay">
+    <div id="changelog_overlay" class="demo-card-square mdl-card mdl-shadow--2dp mdl-card--scrollable">
+        <div class="mdl-card__title">
+            <h5>
+                Kronymous updated
+            </h5>
+        </div>
+        <div class="mdl-card__supporting-text">
+            <p>
+                <strong>Changelog</strong>
+            <hr/>
+            v 0.2.1 <br/>
+            Fixed big related to exitnode, now setting exitnode should work fine.<br/>
+            v 0.2.0 <br/>
+            Changed name from krotor to kronymous to comply with tor trademark rules.<br/>
+            v 0.1.9 <br/>
+            Fixed argv parsing bug<br/>
+            v 0.1.8 <br/>
+            Added functionality to specify advance settings such as exitnode, proxy authentication etc.<br/>
+            Recompiled tor binary with newer toolchain<br/>
+
+            </p>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <button id="changelog_ok_button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
                 Ok
             </button>
         </div>

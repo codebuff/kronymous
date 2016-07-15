@@ -60,6 +60,10 @@ document.getElementById('ok_button').addEventListener("click", function () {
 document.getElementById('anonymity_ok_button').addEventListener("click", function () {
     document.getElementById('anonymity-help--overlay').classList.remove('visible');
 });
+//changelog
+document.getElementById('changelog_ok_button').addEventListener("click", function () {
+    document.getElementById('changelog').classList.remove('visible');
+});
 
 //start / restart tor button
 document.getElementById('start_button').addEventListener("click", function () {
@@ -127,4 +131,12 @@ document.getElementById('anonymity').addEventListener("click", function () {
      setTimeout(function () {
      window.location.assign("about.html");
      }, 300);*/
+});
+
+chrome.runtime.onInstalled.addListener(function (details) {
+    if (details.reason == "install") {
+        //console.log("This is a first install!");
+    } else if (details.reason == "update") {
+        document.getElementById("changelog").classList.add("visible");
+    }
 });
