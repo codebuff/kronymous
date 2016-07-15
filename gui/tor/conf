@@ -1,0 +1,2 @@
+GeoIPFile /mnt/http/tor/geoip-files/geoip
+GeoIPv6File /mnt/http/tor/geoip-files/geoip6
