@@ -2,7 +2,7 @@
   "program": {
     "portable": {
       "pnacl-translate": {
-        "url": "_platform_specific/pnacl/tor.pexe"
+        "url": "pnacl/tor.pexe"
       }
     }
   }

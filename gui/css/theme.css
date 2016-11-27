@@ -67,7 +67,7 @@ body.hide {
   .main-container .advanced-button {
     margin: 16px 8px 0 0; }
   .main-container .autostart_fix {
-    width: 160px;
+    width: 170px;
     display: inline-block;
     margin-top: 17px;
     float: right; }
@@ -293,7 +293,7 @@ body.hide {
   .mdl-card--scrollable .mdl-card__title {
     height: 64px; }
   .mdl-card--scrollable .mdl-card__supporting-text {
-    position: absolute;
+    /*position: absolute;*/
     height: calc(100% - 164px);
     overflow-y: scroll; }
   .mdl-card--scrollable .mdl-card__supporting-text::-webkit-scrollbar-button {
