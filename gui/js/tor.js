@@ -9,7 +9,7 @@ var saved_settings;
 function set_settings(settings) {
     saved_settings = settings;
 }
-NaClTerm.nmf = '../tor.nmf';
+NaClTerm.nmf = '../tor_pnacl.nmf';
 
 /* check whether another instance of this app is running
  #TODO(dt) check if default port is occupied

@@ -75,6 +75,19 @@ document.getElementById('start_button').addEventListener("click", function () {
         updateTorStatus( "Tor Proxy is running, see below for details.");
         document.getElementById('start_button_text').innerHTML = "Restart Tor Proxy";
         document.getElementById('anonymity').setAttribute('style', 'display:inline-block');
+        //
+        var snackbarContainer = document.querySelector('#start_button');
+          var snackbarContainer = document.querySelector('#demo-snackbar-example');
+          var handler = function(event) {
+              document.getElementById('demo-snackbar-example').remove();
+          };
+            var data = {
+              message: 'v0.2.6 is a major update, if you face any issues, kindly mention these issues on reddit thread(click help for link) along with your device details.',
+              timeout: 8000,
+              actionHandler: handler,
+              actionText: 'Hide'
+            };
+            snackbarContainer.MaterialSnackbar.showSnackbar(data);
     } else {
         chrome.storage.local.set({ restarting_tor: true });
         document.querySelector('body').classList.add('hide');
