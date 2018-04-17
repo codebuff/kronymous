@@ -2,4 +2,4 @@ A Chrome app which creates a system wide (tor)socks proxy at port 9999 enabling 
 
 For details visit: [deepankar.io/kronymous](https://deepankar.io/kronymous)  
 
-[Install from webstore](https://deepankar.io/kronymous/webstore)
+Google decided to discontinue the Portable native client platform in favour of Webassembly thus development on this project has been stopped and is no longer maintained.
